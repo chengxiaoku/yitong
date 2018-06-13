@@ -1,0 +1,75 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">低中高级</h3>
+                        <div class="box-tools">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="#"><i class="fa fa-inbox"></i> 低 </a></li>
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div><!-- /. box -->
+            </div><!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">课件列表</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                <tr>
+                                    <th width="25%">课件名称</th>
+                                    <th width="25%" class="text-center">课时</th>
+                                    <th width="25%" class="text-center">状态</th>
+                                    <th width="25%" class="text-center">管理操作</th>
+                                </tr>
+                                <volist name="course_message" id="course_message">
+                                    <tr>
+                                        <td>{$course_message.title}</td>
+                                        <td class="text-center">{$course_message.period}</td>
+                                        <td class="text-center">
+                                            <if condition="$data3[$i-1]['end'] == 1">
+                                                <small class="label bg-aqua">观看完</small>
+                                                <else/>
+                                                <small class="label btn btn-warning">未观看</small>
+                                            </if>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="label bg-green" href="{:U('publictrain/video')}&id={$course_message.id}">播放</a>
+                                        </td>
+                                    </tr>
+                                </volist>
+                                </tbody>
+                            </table><!-- /.table -->
+                        </div><!-- /.mail-box-messages -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer no-padding">
+                    </div>
+                </div><!-- /. box -->
+            </div><!-- /.col -->
+        </div>
+
+
+    </section>
+
+</div><!-- ./wrapper -->
+
+<script type="text/javascript">
+
+</script>
+<include file="Public:footer"/>

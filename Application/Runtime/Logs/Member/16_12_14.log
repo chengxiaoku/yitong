@@ -1,0 +1,4 @@
+[ 2016-12-14T17:41:07+08:00 ] 127.0.0.1 /yitong/member.php?m=Member&c=auth&a=login
+ERR: 1054:Unknown column 'admin' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `tbl_member` WHERE ( identity=admin ) LIMIT 1  
+

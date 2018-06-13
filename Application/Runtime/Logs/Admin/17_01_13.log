@@ -1,0 +1,576 @@
+[ 2017-01-13T15:21:18+08:00 ] 127.0.0.1 /yitong/admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:18+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: title E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\dcfb7ddaab59bfbce2ddc9c860debad0.php 第 5 行.
+NOTIC: [8] Undefined variable: meta_title E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\dcfb7ddaab59bfbce2ddc9c860debad0.php 第 101 行.
+NOTIC: [8] Undefined variable: error E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\dcfb7ddaab59bfbce2ddc9c860debad0.php 第 121 行.
+NOTIC: [8] Undefined variable: ref E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\dcfb7ddaab59bfbce2ddc9c860debad0.php 第 150 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:19+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:27+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_admin` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0312s ]
+SQL: SHOW COLUMNS FROM `tbl_admin_role` [ RunTime:0.0000s ]
+SQL: SELECT `disabled` FROM `tbl_admin_role` WHERE ( id = 42 ) LIMIT 1   [ RunTime:0.0156s ]
+SQL: UPDATE `tbl_admin` SET `lasttime`='2017-01-13 15:21:26',`lastip`='127.0.0.1' WHERE `id` = 1 [ RunTime:0.0156s ]
+NOTIC: [8] Undefined index: is_super_admin E:\phpstudy\www\yitong\Application\Admin\Controller\AuthController.class.php 第 97 行.
+
+[ 2017-01-13T15:21:27+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0000s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_member` [ RunTime:0.0156s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_member` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_member` ORDER BY add_time DESC LIMIT 0,8   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_specialty` [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tbl_course` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_notice` [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_specialty` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_course` LIMIT 1   [ RunTime:0.0156s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_notice` LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant female - assumed 'female' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 245 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant female - assumed 'female' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 245 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046800s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046800s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:32+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Photo&a=Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0000s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_member` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_member` ORDER BY add_time DESC  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:35+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Profession&a=Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0000s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_specialty` [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_specialty` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_specialty` ORDER BY add_time desc LIMIT 0,8   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:40+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0936s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0624s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0624s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0780s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.1248s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.1248s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.4836s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0780s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.1248s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0780s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.1092s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0624s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.1092s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_admin` LIMIT 1   [ RunTime:0.0468s ]
+SQL: SELECT * FROM `tbl_admin` ORDER BY addtime desc LIMIT 0,8   [ RunTime:0.0624s ]
+SQL: SHOW COLUMNS FROM `tbl_admin_role` [ RunTime:0.0624s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 2 ) LIMIT 1   [ RunTime:0.0936s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 42 ) LIMIT 1   [ RunTime:0.0624s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 2 ) LIMIT 1   [ RunTime:0.0624s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 8 ) LIMIT 1   [ RunTime:0.0468s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:41+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0156s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_admin` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_admin` ORDER BY addtime desc LIMIT 0,8   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tbl_admin_role` [ RunTime:0.0156s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 2 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 42 ) LIMIT 1   [ RunTime:0.0156s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 2 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `name` FROM `tbl_admin_role` WHERE ( id = 8 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+NOTIC: [8] Undefined index: name E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\290599043fe506fab663c9b79785bfc6.php 第 211 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T15:21:43+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=admin&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0000s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0156s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin_role` [ RunTime:0.0156s ]
+SQL: SELECT `id`,`name` FROM `tbl_admin_role` WHERE ( disabled = '1' )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-01-13T18:09:04+08:00 ] 127.0.0.1 /yitong/admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0100s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0100s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0100s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tbl_member` [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_member` LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_member` ORDER BY add_time DESC LIMIT 0,8   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `tbl_specialty` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tbl_course` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `tbl_notice` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_specialty` LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_course` LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_notice` LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant female - assumed 'female' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 245 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant female - assumed 'female' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 245 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+NOTIC: [8] Use of undefined constant male - assumed 'male' E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 244 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-01-13T18:09:07+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Member&a=Index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0140s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tbl_member` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tbl_member` LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tbl_member` ORDER BY add_time DESC LIMIT 0,8   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `tbl_specialty` [ RunTime:0.0040s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 50 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 50 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `name` FROM `tbl_specialty` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-01-13T18:09:08+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=member&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0030s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `tbl_member` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tbl_member`  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `tbl_specialty` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `tbl_specialty`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 222 行.
+NOTIC: [8] Undefined index: level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 222 行.
+NOTIC: [8] Undefined index: level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 222 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: educational E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 253 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: profession E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 283 行.
+NOTIC: [8] Undefined index: duty_level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 291 行.
+NOTIC: [8] Undefined index: duty_level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 291 行.
+NOTIC: [8] Undefined index: duty_level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 291 行.
+NOTIC: [8] Undefined index: duty_level E:\phpstudy\www\yitong\Application\Runtime\Cache\Admin\cbac30b13a417c95dc977a1bb5ff6dbc.php 第 291 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-01-13T18:09:20+08:00 ] 127.0.0.1 /yitong/admin.php?m=admin&c=member&a=jqueryFileUpload
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tbl_admin` [ RunTime:0.0090s ]
+SQL: SELECT `headimg` FROM `tbl_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tbl_adinm_role_priv` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 259 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: children E:\phpstudy\www\yitong\Application\Admin\Controller\BaseController.class.php 第 239 行.
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_adinm_role_priv` WHERE ( roleid = 42 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: _method E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 1144 行.
+NOTIC: [8] Undefined index: HTTP_CONTENT_DISPOSITION E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 1148 行.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 1148 行.
+NOTIC: [8] Undefined index:  E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 417 行.
+NOTIC: [8] Undefined index: upload_dir E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 226 行.
+NOTIC: [8] Undefined index: upload_url E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 254 行.
+NOTIC: [8] Undefined index: redirect E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 1140 行.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\phpstudy\www\yitong\Application\Common\Util\UploadHandler.class.php 第 1148 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+

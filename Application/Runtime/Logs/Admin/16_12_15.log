@@ -1,0 +1,46 @@
+[ 2016-12-15T10:38:36+08:00 ] 127.0.0.1 /yitong/admin.php?m=admin&c=video&a=jqueryFileUpload
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000749s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001557s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\www\yitong\Application\Admin\Controller\BaseController.class.php ç¬¬ 184 è¡Œ.
+NOTIC: [8] Undefined index: _method E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1144 è¡Œ.
+NOTIC: [8] Undefined index: files E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1136 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_DISPOSITION E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+NOTIC: [8] Undefined index: redirect E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1140 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000940s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001076s ]
+
+[ 2016-12-15T10:39:11+08:00 ] 127.0.0.1 /yitong/admin.php?m=admin&c=video&a=jqueryFileUpload
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001438s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\www\yitong\Application\Admin\Controller\BaseController.class.php ç¬¬ 184 è¡Œ.
+NOTIC: [8] Undefined index: _method E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1144 è¡Œ.
+NOTIC: [8] Undefined index: files E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1136 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_DISPOSITION E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+NOTIC: [8] Undefined index: redirect E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1140 è¡Œ.
+NOTIC: [8] Undefined index: HTTP_CONTENT_RANGE E:\wamp\www\yitong\Application\Common\Util\UploadHandler.class.php ç¬¬ 1148 è¡Œ.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001031s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001175s ]
+
+[ 2016-12-15T11:01:20+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=video&a=index
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+
+
+[ 2016-12-15T11:02:47+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=login
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+
+
+[ 2016-12-15T11:03:33+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=login
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+
+
+[ 2016-12-15T21:08:48+08:00 ] 127.0.0.1 /yitong/admin.php
+ERR: SQLSTATE[HY000] [2002] Ì×½Ó×Ö²Ù×÷³¢ÊÔÒ»¸öÎÞ·¨Á¬½ÓµÄÖ÷»ú¡£
+
+

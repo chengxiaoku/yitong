@@ -1,0 +1,89 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+                <!-- general form elements -->
+                <div class="box box-solid">
+                    <!-- form start -->
+                    <form role="form" id="baocun" enctype="multipart/form-data" action="{:U('admin/profession/profession_add')}" method="post">
+                        <div class="box-body">
+                            <div class="form-group"> <!--has-error-->
+                                <label for="">专业名称 <span class="required">*</span></label>
+                                <div>
+                                    <input name="name"  type="text" required class="form-control wp50 inline-block" id="title" placeholder="输入专业名称 ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea placeholder="请输入描述 ..." rows="3" name="content" class="form-control"></textarea>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group  ">
+                                <label>专业等级</label>
+                                <select class="form-control wp50" name="level">
+                                    <option value="0">低级</option>
+                                    <option value="1">中级</option>
+                                    <option value="2">高级</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group"> <!--has-error-->
+                                <label for="">请输入学时 <span class="required">*</span></label>
+                                <div>
+                                    <input name="period"  type="text" required class="form-control wp50 inline-block" id="period" placeholder="输入学时 ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group  ">
+                                <label>状态：</label>
+                                <br>
+                                <form>
+                                    <label><input name="status" type="radio" value="1" checked/>启用 </label>
+                                    <label><input name="status" type="radio" value="0" />禁止 </label>
+                                </form>
+                            </div>
+
+                            <div class="box-footer">
+                               <button class="btn btn-primary w100" type="submit">保存</button>
+                                <a onclick="history.go('-1')" class="btn btn-info w100 mr20" type="submit">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+
+        </div>
+    </section>
+    <!-- /.content -->
+
+</div><!-- ./wrapper -->
+
+<script type="text/javascript">
+    $("#baocun").validate({
+        rules: {
+            name: "required",
+            content: "required",
+            period: {
+                required:true,
+                digits:true
+            }
+        },
+        messages: {
+            name: "专业名称不能为空",
+            content: "描述不能为空",
+            period: "只能为整数"
+        }
+    });
+</script>
+<include file="Public:footer"/>

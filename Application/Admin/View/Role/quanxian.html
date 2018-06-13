@@ -1,0 +1,127 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-7 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 style="margin: 0">修改角色权限</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body padding20">
+                        <table id="dnd-example" class="treetable table table-hover">
+                            <foreach name="menu" item="vo" key="i">
+                                <tr id="{$i}">
+                                    <td>
+                                        <label style="color: #333;padding-left: 5px;"><input id="{$vo.c}" type="checkbox" class="ckbox" value="{$vo.m}|{$vo.c}">&nbsp;{$vo.title}</label>
+                                    </td>
+                                </tr>
+                                <foreach name="vo['children']" item="voo" key="k">
+                                    <tr id="{$k}" class="{$i}">
+                                        <td>
+                                            <label style="color: #333;padding-left: 20px;"><input type="checkbox" class="ckbox {$voo.c} two" value="{$voo.m}|{$voo.c}|{$voo.a}">&nbsp;{$voo.title}</label>
+                                        </td>
+                                    </tr>
+                                </foreach>
+                            </foreach>
+                            <foreach name="o" item="oo" key="kk">
+                                <tr style="display: none">
+                                    <td>
+                                        <input id="{$kk}c" value="{$oo}">
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </table>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button class="btn btn-primary w100" onclick="return bc()">保存</button>
+                        <a onclick="history.go('-1')" class="btn btn-info w100 ml20">返回</a>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+
+    </section><!-- /.content -->
+
+</div><!-- ./wrapper -->
+<include file="Public:footer"/>
+<script>
+    $(document).ready(function () {
+        $('.two').click(
+                function () {
+                    var a=$('.two').parent().parent().parent().attr('class');
+
+                    if($('.two').is(':checked')){
+                        $("#"+a+" input").prop("checked",'true');
+                    }else{
+                        $("#"+a+" input").prop("checked",'');
+                    }
+                }
+        )
+        var a=$('.two').parent().parent().parent().attr('class');
+        $("#"+a+" input").click(
+                function () {
+                    if($("#"+a+" input").is(':checked')){
+                    }else{
+                        $('.two').prop("checked",'');
+                    }
+                }
+        )
+
+
+        for (ii=0;ii<{$cc};ii++){
+            var c=$('#'+ii+'c').val();
+            if(c==''){}else{
+                $("#"+c+" input").prop("checked",'true');
+            }
+
+        }
+
+        var lenth=$('tr').length;
+        for (i=0;i<lenth;i++){
+            var a=$('tr').eq(i).attr('class');
+            var b=$('tr').eq(i-1).attr('id');
+            $("."+a).css('display','none');
+            if (a==b){
+                $("#"+a+" td").append('<span class="indenter pull-left"><button onclick="return zk(\''+a+'\')" title="Expand" class="glyphicon glyphicon-chevron-right"></button></span>');
+            }
+        }
+    });
+    function zk(b) {
+        var css=$("#"+b+' button').attr('class');
+        if (css=='glyphicon glyphicon-chevron-right'){
+            $("."+b).css('display','');
+            $("#"+b+' button').removeClass('glyphicon-chevron-right');
+            $("#"+b+' button').addClass('glyphicon-chevron-down');
+        }else{
+            $("."+b).css('display','none');
+            $("#"+b+' button').removeClass('glyphicon-chevron-down');
+            $("#"+b+' button').addClass('glyphicon-chevron-right');
+        }
+
+    }
+    function bc() {
+        var sj=[];
+        $('.ckbox:checked').each(function () {
+            sj.push($(this).val())
+        });
+        if (sj==''){
+            sj='no';
+        }
+       var url = "{:U('Role/quanxian')}&sj="+sj+"&id="+{$id};
+
+        $.getJSON(url,function (json){
+            alert(json);
+			history.go();
+        }
+        )
+
+    }
+
+</script>
+

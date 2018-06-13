@@ -1,0 +1,147 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<!-- 引入视频插件-->
+<script src="./Public/build/mediaelement-and-player.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./Public/build/mediaelementplayer.min.css">
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- Main content -->
+    <section class="content">
+      <!-- <img src="{:ASSETS}/defualt-skin.png" width="100%">-->
+        <div class="video-bg">
+        <video width="960" height="540" src="{$course_message['video_url']}" type="video/mp4"
+               id="player1" poster="{:ASSETS}img/ytjz.jpg"
+               controls="controls" preload="none"></video>
+            <img hidden width="960" height="540" src="{:ASSETS}img/video_end.jpg" id="video_end_img">
+            <button id="video_end_btn" hidden="hidden"></button>
+        </div>
+    </section>
+
+</div><!-- ./wrapper -->
+<style>
+    .video-bg{
+        width: 1130px;
+        background: url("{:ASSETS}img/video_see.jpg") no-repeat;
+        background-size:1200px;
+        padding: 6px 0px 180px 120px;
+        margin-left: -50px;
+    }
+
+.content-wrapper{
+    background-color: #fff;
+}
+    #video_end_img{
+        position: absolute;
+        top:110px;
+        left:315px;
+        z-index:9998;
+    }
+    #video_end_btn{
+        position: absolute;
+        top:335px;
+        left:707px;
+        z-index:9999;
+        width: 177px;
+        height: 188px;
+        background: none;
+        border: none;
+    }
+</style>
+<if condition="$end ==  0">
+<script type="text/javascript">
+    var _vido_id = "{$data['id']}";
+    //异步请求发送的地址
+    var my_url = "{:U('publictrain/log')}";
+    //获取进度
+    var time = "{$time}";
+    var player = null;
+    $("#player1").mediaelementplayer({
+        features: ['playpause','current','duration','tracks','volume','fullscreen'],
+        enableKeyboard: false,
+
+        success: function(mediaElement, domElement) {
+            player = mediaElement;
+            //监听时间进度事件
+            player.addEventListener("timeupdate", CallBackTimeupdate);
+            //监听暂停事件
+            player.addEventListener("pause", CallBackPause);
+            //监听点击播放按钮事件
+            player.addEventListener("playing", CallBackPlaying);
+            //监听点击开始
+            player.addEventListener("progress", CallBackProgress);
+            //监听完毕事件
+            player.addEventListener("ended", CallBackEnded);
+
+            //定位到20秒
+            player.setCurrentTime(time);
+            player.addEventListener("loadedmetadata", CallBackLoadeddata);
+
+        }
+
+    });
+
+    function CallBackLoadeddata() {
+        var total = player.duration  ;
+        //console.log(player);
+    }
+
+    function CallBackTimeupdate() {
+        //当前时间
+        var current_time = player.currentTime;
+    }
+
+    function CallBackPause() {
+        //暂停时间
+        var current_time = player.currentTime;
+    }
+
+
+    function CallBackPlaying() {
+        //点击播放按钮事件
+        var current_time = player.currentTime;
+        xa = 0;
+        var _timer = setInterval(function(){
+                xa ++;
+                if(xa == 1){
+                    player.stop();
+                    clearTimeout(_timer);
+                }
+        }, 300000);
+    }
+
+    //播放过程中的事件（只是在开始触发）
+    function CallBackProgress() {
+        //5分钟是5秒的60倍
+        setInterval(function(){
+            //每5秒回传一次数据
+            if (!player.paused) {
+                //非暂停情况下回传数据
+                var _time = player.currentTime;
+                $.post(my_url, {vido_id:_vido_id,time:_time}, function(data) {
+                });
+            }
+        }, 5000);
+    }
+
+    //视频播放完毕事件
+    function CallBackEnded() {
+        $('#video_end_img').show();
+        $('#video_end_btn').show();
+        var url = "{:U('publictrain/end')}";
+        $.post(url, {vido_id:_vido_id}, function(data) {
+        });
+    }
+
+
+    $(function(){
+        $("#video_end_btn").click(function(){
+            window.location.reload();//刷新当前页面.
+        });
+    });
+</script>
+</if>
+<div class='control-sidebar-bg'></div>
+
+</body>
+</html>

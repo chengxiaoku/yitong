@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+<input  type="radio" id="gender_male" value="m" name="gender" required />
+<input  type="radio" id="gender_female" value="f" name="gender"/>
+checkbox 的 required 表示必须选中。
+<input type="checkbox" class="checkbox" id="agree" name="agree" required />
+checkbox 的 minlength 表示必须选中的最小个数，maxlength 表示最大的选中个数，rangelength:[2,3] 表示选中个数区间。
+<input type="checkbox" class="checkbox" id="spam_email" value="email" name="spam[]" required minlength="2" />
+<input type="checkbox" class="checkbox" id="spam_phone" value="phone" name="spam[]" />
+<input type="checkbox" class="checkbox" id="spam_mail" value="mail" name="spam[]" />
+select 的 required 表示选中的 value 不能为空。
+<select id="jungle" name="jungle" title="Please select something!" required>
+    <option value=""></option>
+    <option value="1">Buga</option>
+    <option value="2">Baga</option>
+    <option value="3">Oi</option>
+</select>
+select 的 minlength 表示选中的最小个数（可多选的 select），maxlength 表示最大的选中个数，rangelength:[2,3] 表示选中个数区间。
+<select id="fruit" name="fruit" title="Please select at least two fruits" class="{required:true, minlength:2}" multiple="multiple">
+    <option value="b">Banana</option>
+    <option value="a">Apple</option>
+    <option value="p">Peach</option>
+    <option value="t">Turtle</option>
+</select>
+    <button class="btn btn-primary w100" type="submit" onclick="return login()">保存
+    </button>
+</form>
+<script src="{:ASSETS}plugins/jquery-validate/jquery.validate.min.js"></script>
+<script src="{:ASSETS}plugins/jquery-validate/localization/messages_zh.min.js"></script>
+</body>
+</html>

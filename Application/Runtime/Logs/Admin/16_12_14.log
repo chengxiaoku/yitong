@@ -1,0 +1,15 @@
+[ 2016-12-14T20:16:10+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=index
+ERR: 1146:Table 'admin.a' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `admin`.`a`
+
+[ 2016-12-14T20:16:22+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=index
+ERR: 1146:Table 'ytjz.admin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `admin`
+
+[ 2016-12-14T20:17:18+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=index
+ERR: 1146:Table 'ytjz.admin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `admin`
+
+[ 2016-12-14T20:59:07+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=Admin&a=delall
+ERR: 参数错误或者未定义:id
+

@@ -1,0 +1,32 @@
+<!--左侧边栏-->
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            {$menu_html}
+        </ul>
+        <input id="cc" style="display: none" value="{$csm}">
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<script>
+    $(document).ready(function () {
+                var lenth = $('.pd_Q').length;
+                var cc=$("#cc").val();
+                for (i=0;i<lenth;i++){
+                    if(cc==$(".pd_Q").eq(i).attr("id")){
+                        if ($(".pd_Q").eq(i).parent().attr("class")=='treeview-menu'){
+                            $('.sidebar-menu li').eq(i).parent().parent().addClass('active');
+                            $('.sidebar-menu li').eq(i).addClass('active');
+                        }else{
+                            $('.sidebar-menu li').eq(i).addClass('active');
+                        }
+                    }
+                }
+            }
+    )
+</script>

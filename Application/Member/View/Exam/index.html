@@ -1,0 +1,216 @@
+<HTML>
+<META HTTP-EQUIV='pragma' CONTENT='no-cache'>
+
+<!-- Bootstrap 3.3.4 -->
+
+<HEAD><TITLE>考试试卷</TITLE>
+    <META content='Microsoft FrontPage 6.0' name=GENERATOR>
+    <META content=FrontPage.Editor.Document name=ProgId>
+    <META content='text/html; charset=utf-8' http-equiv=Content-Type>
+    <STYLE type=text/css>
+        BODY {
+        FONT-FAMILY: '宋体';
+        FONT-SIZE: 12pt;
+    }
+
+    TD {
+        FONT-SIZE: 12pt;
+        padding-top: 10pt;
+    }
+
+    .btn-lg {
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 6px;
+    }
+
+    .btn-success {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    </STYLE>
+</HEAD>
+<BODY topmargin='10' leftmargin='0'>
+<center>
+    <TABLE width='978' height='400' border=0 align='center' cellPadding=0 cellSpacing=0>
+        <form role="form" id="loginForm" action="{:U('exam/test')}" method="post">
+            <tr>
+                <td align='right' width=10 height=50 valign='middle'></td>
+                <td align='center' width=970 height='50' valign='middle' bgcolor='#FFFFFF'>
+                    <font style='font-family: 黑体; font-size: 24pt; LINE-HEIGHT: 50pt'>
+                        考试试卷
+                    </font> <br><br>
+                </td>
+            </tr>
+            <tr>
+                <td align='center' width=5 height='100%' valign='top'></td>
+                <td align='center' width=970 height='100%' valign='top' bgcolor='#FFFFFF'>
+                    <table width='100%' align='center' bgcolor='#AAEEEE' border='1' cellpadding='2' cellspacing='1'
+                           bordercolorlight='#CECECE' bordercolordark='#F0F0F0' valign='top'>
+                        <tr bgcolor='#FAF0FA' align=left>
+                            <td colspan='2' height=30 valign=middle>
+                                <font color=black style='font-size:14pt;line-height:20pt;'>
+                                    <b>一、单项选择题</b>(本题总分50.0分,本大题包括25小题,每题2分,总计50.0分)
+                                </font>
+                            </td>
+                        </tr>
+                        <tr bgcolor='#FAFBF0'>
+                            <td colspan='2'></td>
+                        </tr>
+                        <div class="dx">
+                            <volist name="data['Single Choice']" id='row'>
+                                <tr>
+                                    <td width='40' valign='middle'>{$i}、</td>
+                                    <td width='820' bgcolor=#FFFFFF valign='top'>
+                                        {$row['title']}<br>
+                                        <pre><?php foreach($row['body'] as $key=>
+                                            $val){ ?> <?php echo $key.'、'.$val.'<br/>' ;?><?php } ;?></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        A<input type="radio" name="{$i}1" value="A" required>
+                                        B<input type="radio" name="{$i}1" value="B" >
+                                        C<input type="radio" name="{$i}1" value="C">
+                                        D<input type="radio" name="{$i}1" value="D" >
+                                    </td>
+                                </tr>
+                                <tr bgcolor='#E0E0F0'>
+                                    <td colspan='2' height=10></td>
+                                </tr>
+                            </volist>
+                        </div>
+                        <tr bgcolor='#FAF0FA' align=left>
+                            <td colspan='2' height=30 valign=middle>
+                                <font color=black  style='font-size:14pt;line-height:20pt;'>
+                                    <b>二、判断题</b>(本题总分20.0分,本大题包括10小题,每题2分,总计20.0分)
+                                </font>
+                            </td>
+                        </tr>
+                        <tr bgcolor='#FAFBF0'>
+                            <td colspan='2'></td>
+                        </tr>
+
+                        <volist name="data['true-false']" id='row'>
+                            <tr>
+                                <td width='40' valign='middle'>{$i}、</td>
+                                <td width='820' bgcolor=#FFFFFF valign='top'>{$row['title']}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    对<input type="radio" name="{$i}2" value="对"  required>
+                                    错<input type="radio" name="{$i}2" value="错">
+                                </td>
+                            </tr>
+                            <tr bgcolor='#E0E0F0'>
+                                <td colspan='2' height=10></td>
+                            </tr>
+                        </volist>
+
+                        <tr bgcolor='#FAF0FA' align=left>
+                            <td colspan='2' height=30 valign=middle>
+                                <font color=black style='font-size:14pt;line-height:20pt;'>
+                                    <b>三、多项选择题</b>(本题总分30.0分,本大题包括10小题,每题3分,总计30.0分)
+                                </font>
+                            </td>
+                        </tr>
+                        <tr bgcolor='#FAFBF0'>
+                            <td colspan='2'></td>
+                        </tr>
+
+                        <volist name="data['multiple choice']" id='row'>
+
+                            <tr>
+                                <td width='40' valign='middle'>{$i}、</td>
+                                <td width='820' bgcolor=#FFFFFF valign='top'>{$row['title']}<br>
+                                    <pre><?php foreach($row['body'] as $key=>$val){ ?> <?php echo $key.'、'.$val.'<br/>' ;?><?php } ;?></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    A<input type="checkbox" name="{$i}3[]" value="A" minlength="2" />
+                                    B<input type="checkbox" name="{$i}3[]" value="B" />
+                                    C<input type="checkbox" name="{$i}3[]" value="C"/>
+                                    D<input type="checkbox" name="{$i}3[]" value="D"/>
+                                    E<input type="checkbox" name="{$i}3[]" value="E"/>
+                                </td>
+                            </tr>
+                            <tr bgcolor='#E0E0F0'>
+                                <td colspan='2' height=10></td>
+                            </tr>
+                        </volist>
+
+                    </table>
+                    <button style="width:200px; height:50px;" type="submit" class="btn btn-success btn-lg" onclick="return toget()">
+                        提交
+                    </button>
+        </form>
+
+        <script src="{:ASSETS}plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+        <script src="{:ASSETS}plugins/jquery-validate/jquery.validate.min.js"></script>
+        <script src="{:ASSETS}plugins/jquery-validate/localization/messages_zh.min.js"></script>
+        <script>
+            function toget() {
+             return confirm("是否确定提交试卷?");
+             }
+
+
+            jQuery.validator.addMethod('atLeastOneChecked', function(value, element) {
+                $parent = $(element).parent();
+                return ($parent.find('input:checked').length > 0);
+            });
+
+            $('#loginForm').validate({
+                rules: {
+                    "13[]": { atLeastOneChecked: true },
+                    "23[]": { atLeastOneChecked: true },
+                    "33[]": { atLeastOneChecked: true },
+                    "43[]": { atLeastOneChecked: true },
+                    "53[]": { atLeastOneChecked: true },
+                    "63[]": { atLeastOneChecked: true },
+                    "73[]": { atLeastOneChecked: true },
+                    "83[]": { atLeastOneChecked: true },
+                    "93[]": { atLeastOneChecked: true },
+                    "103[]": { atLeastOneChecked: true }
+                },
+                messages: {
+                    list0: { 'Please check at least one option' }
+                }
+            });
+
+
+        </script>
+    </TABLE>
+</center>
+</BODY>
+
+</HTML>

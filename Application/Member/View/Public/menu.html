@@ -1,0 +1,61 @@
+<!--左侧边栏-->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <ul class="sidebar-menu">
+
+            <li id="Index" class="treeview pd_Q">
+                <a href="{:U('Index/index')}">
+                    <i class="fa ion-person"></i>
+                    <span>个人信息</span>
+                </a>
+            </li>
+
+            <li class="treeview pd_Q">
+                <a href="#">
+                    <i class="fa ion-android-globe"></i>
+                    <span>网络培训</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="Specialized" class="pd_Q"><a href="{:U('Specialized/index')}"><i class="fa fa-circle-o"></i><span>专业课</span></a></li>
+                    <li id="Publictrain" class="pd_Q"><a href="{:U('Publictrain/index')}"><i class="fa fa-circle-o"></i><span>公需课</span></a></li>
+                    <li id="Exam" class="pd_Q"><a href="{:U('Exam/index')}"><i class="fa fa-circle-o"></i><span>在线测试</span></a></li>
+                    <li id="Xueshi" class="pd_Q"><a href="{:U('Xueshi/index')}"><i class="fa fa-circle-o"></i><span>学时证明</span></a></li>
+                </ul>
+            </li>
+            <li id="Systemnoticiation" class="treeview pd_Q">
+                <a href="{:U('Systemnoticiation/index')}">
+                    <i class="fa ion-chatbubble-working active"></i>
+                    <span>系统通知</span>
+                </a>
+            </li>
+            <li id="Alter" class="treeview pd_Q">
+                <a href="{:U('Alter/index')}">
+                    <i class="fa ion-unlocked "></i>
+                    <span id="aaa">修改密码</span>
+                </a>
+            </li>
+        </ul>
+        <input id="cc" style="display: none" value="{$csm}">
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<script>
+    $(document).ready(function () {
+        var lenth = $('.pd_Q').length;
+        var cc=$("#cc").val();
+        for (i=0;i<lenth;i++){
+            if(cc==$(".pd_Q").eq(i).attr("id")){
+                if ($(".pd_Q").eq(i).parent().attr("class")=='treeview-menu'){
+                    $('.sidebar-menu li').eq(i).parent().parent().addClass('active');
+					 $('.sidebar-menu li').eq(i).addClass('active');
+                }else{
+                    $('.sidebar-menu li').eq(i).addClass('active');
+                }
+            }
+        }
+    }
+    )
+</script>

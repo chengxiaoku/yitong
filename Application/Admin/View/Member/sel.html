@@ -1,0 +1,385 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <include file="Public:breadcrumb"/>
+    <!-- Main content -->
+    <section class="content">
+        <!--表格-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <form role="form" id="loginForm" action="{:U('member/index')}" method="post">
+                            <a class="btn btn-primary" href="{:U('member/add')}">添加会员</a>
+                            <button type="button" class="btn btn-danger" id="delall">批量删除</button>
+                            <a class="btn btn-info" href="{:U('member/doexcel')}" >批量导入数据(Excel)</a>
+                            <a class="btn btn-success" onclick="return dc()" >批量导出数据(Excel)</a>
+                            <a class="btn btn-primary" href="{:U('member/index')}">返回</a>
+                            <div class="select pull-right">
+                                <div style="width:250px; margin-left: 5px;" class="input-group fr">
+                                    <input type="text" id="ss" placeholder="请输入姓名..." class="form-control" name="find">
+                                    <div  class="input-group-btn"><button type="button" id="sou" class="btn btn-default"><i class="fa fa-search"></i></button></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th width="10%" class="tc">
+                                    <input type="checkbox" id="all">
+                                </th>
+                                <th width="10%">姓名</th>
+                                <th width="14%">身份证</th>
+                                <th width="12%">手机号码</th>
+                                <th width="10%">性别</th>
+                                <th width="10%">报考级别</th>
+                                <th width="12%">专业</th>
+                                <th width="10%">已学学时</th>
+                                <th width="12%">管理</th>
+                            </tr>
+
+                            <volist name="list" id="vo">      <!--获取详细内容-->
+                                <tr>
+                                    <th class="tc">
+                                        <input class="xuan" type="checkbox" name="chk" value="{$vo['id']}">   <!--选项框-->
+                                    </th>
+                                    <td>{$vo.name}</td>          <!--姓名-->
+                                    <td>{$vo.identity}</td>      <!--身份证-->
+                                    <td>{$vo.phone}</td>         <!--手机号码-->
+                                    <td>
+                                        <if condition="$vo['sex'] eq 'male'">
+                                            男
+                                            <else/>女
+                                        </if>
+                                    </td>           <!--性别-->
+                                    <td>
+                                        <if condition="$vo['level'] eq 0">
+                                            初级
+                                            <elseif condition="$vo['level'] eq 1"/>
+                                            中级
+                                            <elseif condition="$vo['level'] eq 2"/>
+                                            高级
+                                        </if>
+                                    </td>                <!--报考级别-->
+                                    <td>
+                                        {$arr[$i-1]}      <!--专业-->
+                                    </td>
+                                    <td>{$vo.hour}</td>  <!--已学学时-->
+                                    <td>
+                                        <a class="btn btn-default btn-xs" href="{:U('member/update')}&id={$vo.id}">修改</a>
+                                        <a class="btn btn-default btn-xs" onclick="return del1(this,'{$vo.id}')">删除</a>
+                                        <a class="btn btn-default btn-xs" onclick="return notice(this,'{$vo.id}')">通知</a>
+                                        <a class="btn btn-default btn-xs" href="{:U('member/detail')}&id={$vo.id}">详情</a>
+                                        <a class="btn btn-default btn-xs" onclick="return edit(this,'{$vo.id}')">修改成绩和学时</a>
+                                    </td>                 <!--管理-->
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+
+                    <!--翻页-->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-7 text-right">
+                                <div class="result page">{$fenye}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+    <!-- /.content-wrapper -->
+
+    <!--删除操作模态框-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"> 提示 </h4>
+                </div>
+                <div class="modal-body">
+                    <span class='glyphicon glyphicon-question-sign text-red' style='font-size: 18px;'></span>
+                    <span style='font-size: 18px;' class="ml10 text-red">确认要删除这条数据？</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button1" class="btn btn-primary" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> 取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!--批量删除删除操作模态框-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"> 提示 </h4>
+                </div>
+                <div class="modal-body">
+                    <span class='glyphicon glyphicon-question-sign text-red' style='font-size: 18px;'></span>
+                    <span id="myModalbody"><span style='font-size: 18px;' class="ml10 text-red">确认要删除这条数据？</span></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button4" class="btn btn-primary" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> 取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--批量删除删除操作模态框-->
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"> 提示 </h4>
+                </div>
+                <div class="modal-body">
+                    <span class='glyphicon glyphicon-question-sign text-red' style='font-size: 18px;'></span>
+                    <span id="myModalbody4"><span style='font-size: 18px;' class="ml10 text-red">没有选择要导出的数据</span></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button41" class="btn btn-primary" data-dismiss="modal">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--通知操作模态框-->
+    <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"> 通知 </h4>
+                </div>
+                <div class="modal-body">
+                    <label> 通知标题：</label>
+                    <input id="bt">
+                </div>
+                <div class="modal-body">
+                    <label class="label_mess" style="position: relative;top: -130px;"> 通知内容：</label>
+                    <textarea style="width: 400px; height: 150px;" name="notice" id="notice"></textarea>
+                </div>
+                <div id="tbody" class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div><!-- /.content-wrapper -->
+
+<!--修改成绩和学时模态框-->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{:U('member/save_sql')}" method="post" name="form" id="loginForm_edit">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">修改成绩和学时</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="hid" name="id">
+                    <div class="form-group">
+                        <label class="label_mess"> 修改成绩：</label>
+                        <input type="text" placeholder="输入成绩 ..." name="grade" required id="grade"
+                               class="form-control w100 inline-block">
+                        <p id="ppp"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="label_mess"> 修改学时：</label>
+                        <input type="text" placeholder="输入学时 ..." name="hour" required id="hour"
+                               class="form-control w100 inline-block">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" id="button3" class="btn btn-primary" data-dismiss="modal" onclick="return login()" value="确认"/>
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="取消"/>
+                </div>
+            </div><!-- /.modal-content -->
+        </form>
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+
+    function checked() {
+        $('#Model2').modal('show');
+    }
+    id = 0;
+    //删除数据
+    function del1(a, b) {
+        $("#data_sum").text('确认删除这条数据？');
+        $('#myModal1').modal('show');
+        id = b;
+        return false;
+    }
+    //批量删除数据
+    $("#delall").click(function () {
+        var del_str = '';
+        var len = $('input[name=chk]:checked').length;
+
+        if (len >= 1) {
+            $('input[name=chk]:checked').each(function () {
+                //$(this).val();
+                del_str += ',' + $(this).val();
+            });
+            del_str = del_str.substring(1);
+            id = del_str;
+            $("#myModalbody span").text("确认删除这" + len + '条数据？');
+        } else {
+            $("#myModalbody span").text('没有选择数据！！');
+
+        }
+
+        $('#myModal2').modal('show');
+
+    });
+
+    $('#button1').click(function () {
+        location.href = "admin.php?m=admin&c=member&a=del&id=" + id;
+    });
+    $('#button4').click(function () {
+        if(id == 0){
+            $("#myModal2").modal('hide');
+            return false;
+        }
+
+        location.href = "admin.php?m=admin&c=member&a=del&id=" + id;
+    });
+    no_id =0;
+    //通知
+    function notice(a,b) {
+        $('#myModal5').modal('show');
+        no_id =b ;
+        var tbody='';
+        tbody+='<button type="button" onclick="return tz('+b+')" id="button2" class="btn btn-primary" data-dismiss="modal">确认</button> ' +
+                '<button type="button" class="btn btn-default" data-dismiss="modal"> 取消</button>';
+        $("#tbody").html(tbody);
+        return false;
+    }
+    function tz(a) {
+        var bt=$("#bt").val();
+        var nr=$("#notice").val();
+        var url="{:U('member/tz')}&id=" + id+"&bt="+bt+"&nr="+nr+"&objid="+no_id;
+        $.getJSON(url,function (json){
+                    alert(json);
+                }
+        )
+
+    }
+
+
+
+    //修改成绩和学时
+    user_id = 0;
+    function edit(a,b) {
+        user_id = b;
+        $.post("{:U('member/save')}",{id:b},function (data){
+            str = $.parseJSON(data);
+            $("#grade").val(str[1]);
+            $("#hour").val(str[0]);
+        });
+        $('#myModal3').modal('show');
+        return false;
+    }
+    $('#button3').click(function () {
+
+        $('#myModal3').modal('hide');
+        $("#hid").val(user_id);
+        form.submit();
+        //缺少输入验证
+    });
+
+    //搜索
+    $(function () {
+        $("#sou").click(function () {
+
+            var keyword = $('#ss').val();
+            if (keyword) {
+
+                location.href = "admin.php?m=admin&c=member&a=sel&keyword=" + keyword;
+            } else {
+                alert('输入内容为空');
+                return false;
+            }
+
+
+        });
+    });
+
+
+
+    $(document).ready(
+            function () {
+                $('#all').click(
+                        function () {
+                            if($('#all').is(':checked')){
+                                $(".xuan").prop("checked",'true');
+                            }else{
+                                $(".xuan").prop("checked",'');
+                            }
+                        }
+
+                )
+            }
+    );
+    /**
+     *
+     */
+    $("input[name=chk]").click(function (){
+        var ln = $("input[name=chk]:checked").length;
+        if(ln == $("input[name=chk]").length){
+            $("#all").prop("checked",true);
+        }else{
+            $("#all").prop("checked",false);
+        }
+    });
+
+    /**
+     * 批量导出数据
+     */
+    function dc(){
+        dc_id = '';
+        var _ch = $('input[name=chk]:checked');
+        if(_ch.length == 0){
+            $("#myModal4").modal('show');
+            return false;
+        }else{
+            _ch.each(function (){
+                dc_id += ',' + $(this).val();
+            });
+            dc_id = dc_id.substring(1);
+            location.href = "admin.php?m=admin&c=member&a=excels&id=" + dc_id;
+        }
+    }
+
+</script>
+
+<include file="Public:footer"/>

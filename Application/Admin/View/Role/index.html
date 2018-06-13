@@ -1,0 +1,193 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <a class="btn btn-primary" href="{:U('Role/add')}">添加角色</a>
+                        <a class="btn  btn-danger" id="delall">批量删除</a>
+
+                        <div class="select pull-right">
+                            <div class="input-group" style="width:250px; margin-left: 5px;">
+                                <input id="sour" type="text" name="" class="form-control  " style="" placeholder="搜索...">
+                                <div class="input-group-btn">
+                                    <button onclick="return sour()" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-header -->
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th width="5%" class="tc">
+                                    <input id="all" type="checkbox">
+                                </th>
+                                <th width="5%">编号</th>
+                                <th width="10%">角色名称</th>
+                                <th width="10%">角色描述</th>
+                                <th width="10%">状态</th>
+                                <th width="10%">管理操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <foreach name="user" item="data">
+                                <tr>
+                                    <td class="tc"><input class="xuan" type="checkbox" value="{$data.id}"></td>
+                                    <td>{$data.id}</td>
+                                    <td>{$data.name}</td>
+                                    <td>{$data.description}</td>
+                                    <td class="zt"><small class="label sm">{$data.disabled}</small></td>
+                                    <td>
+                                        <a class="btn btn-default btn-xs" href="{:U('Role/quanxian')}&id={$data.id}">权限设置</a>
+                                        <a class="btn btn-default btn-xs" href="{:U('Role/change')}&id={$data.id}">修改</a>
+                                        <button class="btn btn-default btn-xs" onclick="return del('{$data.id}')">删除</button>
+                                    </td>
+                                </tr>
+                            </foreach>
+                            </tbody>
+                            <tbody style="display: none" id="ooo">
+                            <tr>
+                            <td colspan="6">
+                                <h1 id="yyy"><center>{$no}</center></h1>
+                            </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+
+
+
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <ul class="pagination">
+                                <li id="example2_next" class="paginate_button next">{$next}</li>
+                            </ul>
+                        </div>
+                        <div class="pull-right" id="feny" style="width: {$wid2}px;overflow: hidden;">
+                            <div id="nei" style="width:{$wid}px;position: relative;">
+                                <ul class="pagination">
+                                    <foreach name="allpage" item="data">
+                                        {$data}
+                                    </foreach>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                        <ul class="pagination">
+                            <li id="example2_previous" class="paginate_button previous">{$prev}</li>
+                        </ul>
+                    </div>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+    </section><!-- /.content -->
+
+</div><!-- ./wrapper -->
+<include file="Public:footer"/>
+<script>
+    function del(a) {
+        var url= "{:U('Role/del')}&id="+a;
+        $click=confirm("你确定要删除"+a+"吗");
+        if ($click==true){
+            $.getJSON(url,function (json){
+                        alert(json);
+                        history.go();
+                    }
+            )
+        }
+
+    }
+    function sour() {
+        var sour=$("#sour").val();
+            self.location ="{:U('Role/index')}&sour="+sour;
+    }
+    $(document).ready(
+            function () {
+
+                var page_now={$page};
+                var zy={$all_page};
+                if (page_now<=zy-3){
+                    num=(page_now-2)*33-33
+                    left="-"+num+"px";
+                    $("#nei").animate({left:left},100);
+                }else{
+                    num=zy*33-33*5
+                    left="-"+num+"px";
+                    $("#nei").animate({left:left},100);
+                }
+
+
+                if($("#yyy").text()){
+                    $("#ooo").css('display','');
+                }else{
+                    $("#ooo").css('display','none');
+                }
+				
+				
+                $("#"+page_now).addClass('active');
+
+                var l=$('.sm').length;
+                for (i=0;i<l;i++){
+                    var zt=$('.sm').eq(i).text()
+                    if(zt==0){
+                        $(".sm").eq(i).text('禁用');
+                        $(".sm").eq(i).addClass('bg-red');
+                    }else if(zt==1){
+                        $(".sm").eq(i).text('启用');
+                        $(".sm").eq(i).addClass('bg-primary');
+                    }else{
+                        $(".sm").eq(i).text('无');
+                        $(".sm").eq(i).addClass('bg-black');
+                    }
+                }
+
+
+                $('#all').click(
+                        function () {
+                            if($('#all').is(':checked')){
+                                $(".xuan").prop("checked",'true');
+                            }else{
+                                $(".xuan").prop("checked",'');
+                            }
+                        }
+
+                )
+                $("#delall").click(
+                        function () {
+                            /*for (i=0;i<=4;i++){
+                                alert(i);
+                            }*/
+                            var id=[];
+                            $('.xuan:checked').each(function () {
+                                id.push($(this).val())
+                            });
+                            var pd_id=id.length;
+                            if(pd_id==0){return false;}
+                            var url= "{:U('Role/del')}&id="+id;
+                            $click=confirm("你确定要删除"+id+"吗");
+                            if ($click==true){
+                                $.getJSON(url,function (json){
+                                            alert(json);
+                                            history.go();
+                                        }
+                                )
+                            }
+
+                        }
+                )
+            }
+    )
+
+</script>
+
+

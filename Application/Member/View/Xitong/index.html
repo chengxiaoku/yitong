@@ -1,0 +1,157 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+
+                    </div><!-- /.box-header -->
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th width="5%">标题</th>
+                                <th width="10%">发布日期</th>
+                                <th width="10%">管理操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <foreach name="user" item="data">
+                                <tr>
+                                    <td>{$data.title}</td>
+                                    <td>{$data.add_time}</td>
+                                    <td>
+                                        <button onclick="return ck('{$data.user_id}')" class="btn btn-default btn-xs" >查看</button>
+                                    </td>
+                                </tr>
+                            </foreach>
+                            </tbody>
+                            <tbody style="display: none" id="ooo">
+                            <tr>
+                                <td colspan="6">
+                                    <h1 id="yyy"><center>{$no}</center></h1>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+
+
+
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <ul class="pagination">
+                                <li id="example2_next" class="paginate_button next">{$next}</li>
+                            </ul>
+                        </div>
+                        <div class="pull-right" id="feny" style="width: {$wid2}px;overflow: hidden;">
+                            <div id="nei" style="width:{$wid}px;position: relative;">
+                                <ul class="pagination">
+                                    <foreach name="allpage" item="data">
+                                        {$data}
+                                    </foreach>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <ul class="pagination">
+                                <li id="example2_previous" class="paginate_button previous">{$prev}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+    </section><!-- /.content -->
+
+</div><!-- ./wrapper -->
+<include file="Public:footer"/>
+<div class="modal fade " id="myModala" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+            </div>
+            <div class="modal-body no-padding maxh500">
+                <table class="table table-hover">
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right" style="">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">关闭</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ck(id) {
+        $('#myModala').modal({});
+        var url="{:U('xitong/tankuang')}&id="+id;
+        $.getJSON(url,function (json) {
+            var tbody='';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">id：</p></td>';
+            tbody+='<td class="tc" width="70%"><p class="pull-left">'+json[0].id+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">用户：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].username+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">用户角色：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].roleid+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">最后登录地址：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].lastip+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">结束时间：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].lasttime+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">邮箱：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].email +'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">真实姓名：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].realname+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">添加时间：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].add_time+'</p></td>';
+            tbody+='</tr>';
+            tbody+='</tr>';
+            document.getElementById("tbody").innerHTML=tbody;
+        });
+        return false;
+    }
+    $(document).ready(
+            function () {
+                if($("#yyy").text()){
+                    $("#ooo").css('display','');
+                }else{
+                    $("#ooo").css('display','none');
+                }
+                var page_now={$page};
+                $("#"+page_now).addClass('active');
+            }
+    )
+
+</script>
+
+

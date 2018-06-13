@@ -1,0 +1,259 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+
+            <!-- left column -->
+            <div class="col-md-8">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+
+                    </div><!-- /.box-header -->
+
+                    <!-- form start -->
+                    <form role="form" id="loginForm" action="{:U('admin/video/edit')}" method="post">
+                        <input type="hidden" name="id" value="{$data.id}">
+                        <div class="box-body padding20">
+                            <div class="form-group">
+                                <label for="">视频名称<span class="required">*</span></label>
+                                <input type="text" placeholder="输入视频名称" value="{$data.title}" name="title" required class="form-control wp50" >
+                            </div>
+                            <div class="form-group">
+                                <label>课程类型<span class="required">*</span></label>
+                                <select class="form-control w200" name="video_type" id="video_type">
+                                    <option value="0">专业课</option>
+                                    <option value="1">公需课</option>
+                                </select>
+                            </div>
+                            <div id="specialty_grade_name">
+                                <div class="form-group">
+                                    <label>专业名称<span class="required">*</span></label>
+                                    <select name="specialty_id" class="form-control w200">
+                                        <foreach name="video_specialty" item="video_specialty">
+                                            <option value="{$video_specialty.id}"
+                                            <if condition="($data['specialty'] eq $video_specialty['id'])">selected</if>
+                                            >{$video_specialty.name}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>视频等级<span class="required">*</span></label>
+                                    <select class="form-control w200" name="video_grade" id="video_grade">
+                                        <option value="0">{$video_grade[0]['lower']}</option>
+                                        <option value="1">{$video_grade[0]['mid']}</option>
+                                        <option value="2">{$video_grade[0]['high']}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">视频时长（分钟）<span class="required">*</span></label>
+                                <input type="text" placeholder="输入时长" value="{$data.duration}" name="duration" required class="form-control wp50" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">视频学时（数字）<span class="required">*</span></label>
+                                <input type="text" placeholder="输入学时" value="{$data.period}" name="period" required class="form-control wp50" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">视频状态<span class="required">*</span></label>
+                                <div>
+                                    <if condition="$data.status ==  1">
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input checked="" value="1" id="" name="status" type="radio">允许播放
+                                            </label>
+                                        </div>
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input value="0" id="" name="status" type="radio">禁止播放
+                                            </label>
+                                        </div>
+                                        <else/>
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input value="1" id="" name="status" type="radio">允许播放
+                                            </label>
+                                        </div>
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input checked="" value="0" id="" name="status" type="radio">禁止播放
+                                            </label>
+                                        </div>
+                                    </if>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>视频描述<span class="required">*</span></label>
+                                <textarea placeholder="Enter ..." rows="3" class="form-control" name="description" required>{$data.description}</textarea>
+                            </div>
+
+                            <div class="form-group input-group wp50">
+                                <label for="">上传视频</label>
+                                <div>
+                                    <div class="input-group">
+                                        <input type="text" name="video_url" readonly="readonly" value="{$data.video_url}" id="upload_thumb" class="form-control" placeholder="上传视频 ...">
+                                        <div class="input-group-btn">
+                                            <button onclick="upload()" type="button" class="btn btn-success btn-flat"><i
+                                                    class="fa fw fa-plus-circle"></i></button>
+                                        </div>
+                                    </div>
+                                    <em class="help-block"></em>
+                                </div>
+                            </div>
+
+                        </div><!-- /.box-body -->
+
+                        <div class="box-footer p20">
+                            <button class="btn btn-primary w100" type="submit" onclick="return Verification()">修改</button>
+                            <a onclick="history.go('-1')" class="btn btn-info w100 ml20" type="submit">返回</a>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</div><!-- ./wrapper -->
+<!-- 上传视频 -->
+<div class="modal fade " id="upload_img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">上传视频</h4>
+            </div>
+            <div class="modal-body no-padding maxh500">
+                <div id="images-zone" style="padding: 23px;">
+                  <!--  <img src="" id="img" alt=""><h1 id="jindu"></h1>-->
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" id="jindu" style="width: 0%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-left" style="">
+                    <div class="btn btn-success fileinput-button pull-left inline-block">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>添加视频</span>
+                        <input id="fileupload" type="file" name="files[]" multiple="">
+                    </div>
+                    <!-- <button type="button" class="btn btn-default ml20" data-dismiss="modal">上传图片</button> -->
+                    <span id="loading" class="loading inline-block mt5 ml10 hide"><i class="fa fa-refresh fa-spin"></i>&nbsp; 数据加载中...<em id=""></em></span>
+                    <span id="success" class="loading inline-block mt5 ml10 hide"><i class="fa fa-check-circle-o"></i>上传成功</span>
+                </div>
+                <button type="button" class="btn btn-default ml20" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<script src="{:ASSETS}plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+<link href="{:ASSETS}plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    //表单验证不能为空
+    function Verification() {
+        $("#loginForm").validate({
+            rules: {
+                tite: "required",
+                duration: "required",
+                period:{
+                    required: true,
+                    digits: true,
+                },
+                description: "required",
+                video_url: "required"
+            },
+            messages: {
+                title: "视频不能为空",
+                duration: "时长不能为空",
+                period:{
+                    required: "学时不能为空",
+                    digits: "请输入有效学时",
+                },
+                description: "描述不能为空",
+                video_url: "请上传视频"
+            }
+        });
+        return true;
+    }
+
+    //上传图片
+    function upload() {
+        $('#upload_img').modal({});
+    }
+$(function () {
+    type = document.getElementById("video_type");
+    a = {$type};
+    type[a].selected = true;
+     if (a==1){
+         $("#specialty_grade_name").hide();
+     }
+    $("#video_type").change(function (){
+        var val = $.trim($(this).val());
+        if(val == 1){
+            $("#specialty_grade_name").hide();
+        }else if(val == 0){
+
+            $("#specialty_grade_name").show();
+        }
+    })
+    //在option添加selected
+    obj = document.getElementById("video_grade");
+    i = {$grade};
+    obj[i].selected = true;
+})
+
+
+    //添加图片
+    var url = "{:U('admin/video/upload')}";
+    $("#fileupload").fileupload({
+        url: url,
+        dataType: 'json',
+        autoUpload: true,
+        //acceptFileTypes: /(\.|\/)(mp3|jpe?g|png)$/i,
+        maxFileSize: 1024 * 1024 * 200,
+
+        done: function(e, data) {
+            $.each(data.result.files, function (index, file) {
+                $("#img").attr("src",file.thumbnailUrl);
+                $("#upload_thumb").val('Public/'+file.url);
+                $("#upload_img button:contains('确定')").click(function () {
+                    $("#upload_img").modal("hide");
+                })
+            });
+        },
+
+        progressall: function(e, data) {
+            //显示进度条
+            var progress = parseInt(data.loaded / data.total * 100,10);
+            var jindu =progress+'%';
+            $("#jindu").css("width",jindu);
+            if(progress == 100){
+                $("#success").removeClass("hide");
+                $("#loading").addClass("hide");
+            }else {
+                $("#loading").removeClass("hide");
+                $("#success").addClass("hide");
+            }
+        }
+    });
+
+
+
+</script>

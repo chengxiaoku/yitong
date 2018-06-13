@@ -1,0 +1,181 @@
+
+<include  file="public:header"/>
+<include  file="public:menu"/>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!--子页面标题/面包屑-->
+    <section class="content-header">
+        <h1>通知管理</h1>
+        <ol class="breadcrumb">
+            <li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li class="active">通知管理</li>
+        </ol>
+    </section>
+
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <!--表格-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <a class="btn btn-primary" href="{:U('Inform/inform_add')}">添加</a>
+                        <a class="btn btn-danger" id="delAll">批量删除</a>
+                        <div class="select pull-right">
+                            <form action="{:U('inform/inform_sel')}" method="post">
+                                <div style="width:250px; margin-left: 5px;" class="input-group">
+                                    <input type="text" placeholder="搜索..." style="" class="form-control  " name="search" id="keyword">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" >搜索</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div><!-- /.box-header -->
+                    <form id="FormOrder" action="{:U('inform/inform_edit')}" method="post">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover" id="treeTable">
+
+                                <tr>
+                                    <th width="5%" class="text-center">
+                                        <input type="checkbox" id="ChooseAll">
+                                    </th>
+                                    <th width="20%" class="tc">标题</th>
+                                    <th width="35%">发布日期</th>
+                                    <th width="15%" >状态</th>
+                                    <th width="35">管理操作</th>
+                                </tr>
+
+                                <volist name = "data" id="vo">
+                                    <tr>
+                                        <td class="text-center">
+                                            <input type="checkbox" name="ckbox" value="{$vo.id}">
+                                        </td>
+                                        <td class="tc" valign="{$vo.id}">{$vo.title}</td>
+                                        <td>{$vo.add_time|substr=0,-8}</td>
+                                        <td>
+                                            <if condition="$vo['status'] eq 0">
+                                                <input type="button" class="btn btn-warning btn-xs" value="禁用"/>
+                                                <elseif condition="$vo['status'] eq 1"/>
+                                                <input type="button" class="btn btn-success btn-xs" value="启用"/>
+                                            </if>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-default btn-xs" href="{:U('inform/inform_edit')}&id={$vo.id}">编辑</a>
+                                            <!-- <a class="btn btn-default btn-xs" href="#">模版</a> -->
+                                            <a href="#" class="btn btn-default btn-xs" onclick="return del('{$vo.id}')">删除</a>
+                                        </td>
+                                    </tr>
+                                </volist>
+
+
+
+                            </table>
+                        </div><!-- /.box-body -->
+                    </form>
+                    <div class="box-footer">
+                        <div class="text-right">
+                            {$page}
+                        </div>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+
+</div><!-- ./wrapper -->
+
+
+<!--模态框-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body text-center" id="myModal1body">
+                <i class="glyphicon glyphicon-info-sign fa-2x text-red " style="font-size: 18px;"></i>
+                <span class="text-red" style="font-size:18px;margin-left: 10px;"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="return truedel()" id="button1">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var delid = "";
+    function del(id) {
+        delid = id;
+        $('#myModal1body span').text('确定删除该数据？');
+        $('#myModal1').modal();
+        return fasle;
+    }
+
+
+    //确认删除操作
+    function truedel() {
+        location.href = "{:U('inform/inform_del')}&id=" + delid;
+    }
+    //全选反选
+    $(function (){
+        var boxs = document.getElementsByName('ckbox');
+        $('#ChooseAll').click(function () {
+            $('input[name=ckbox]').prop('checked', $(this).is(':checked'));
+        });
+        $('input[name=ckbox]').click(function () {
+            var len = $('input[name=ckbox]:checked').length;
+            if (len == boxs.length) {
+                $('#ChooseAll').prop('checked', true);
+            } else {
+                $('#ChooseAll').prop('checked', false);
+            }
+        });
+
+
+        //批量删除提示操作
+        $("#delAll").click(function (){
+            var del_str = '';
+            var len = $('input[name=ckbox]:checked').length;
+            if(len>=1){
+                $('input[name=ckbox]:checked').each(function (){
+                    //$(this).val();
+                    del_str +=','+$(this).val();
+                });
+                del_str = del_str.substring(1);
+                delid = del_str;
+                $("#myModal1body span").text("确认删除这"+len+'条数据？');
+                $('#myModal1').modal('show');
+            }else{
+               alert('没有选择数据')
+            }
+
+        })
+    });
+
+
+    //搜索
+    function select() {
+        var val = $("#select").val();
+        var vals = $.trim(val);
+        if (vals == "") {
+            $("#select").val("");
+            $("#select").attr("placeholder", "请输入有效内容");
+            $("#select").focus();
+            return false;
+        }
+    }
+</script>
+<include file="Public:footer"/>

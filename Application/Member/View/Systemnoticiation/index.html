@@ -1,0 +1,164 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+
+        <!-- 主体内容 -->
+        <section class="content">
+
+            <!--表格-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="select pull-right">
+                                <form action="{:U('Systemnoticiation/sel')}" method="post">
+                                    <div style="width:250px; margin-left: 5px;" class="input-group">
+                                        <input type="text" placeholder="请输入要搜索的通知标题" style="" class="form-control  " name="search" id="keyword">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" id="sea" onclick="return select()">搜索</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div><!-- /.box-header -->
+                        <form id="FormOrder" action="" method="post">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover" id="treeTable">
+
+                                    <tr>
+
+                                        <th width="50%">标题</th>
+                                        <th width="25%">发布日期</th>
+                                        <th width="25%">管理操作</th>
+                                    </tr>
+
+
+                                    <volist name = "data" id="vo">
+
+                                        <tr>
+                                            <td>{$vo.title}</td>
+                                            <td>{$vo.add_time}</td>
+                                            <td>
+                                                <button onclick="return ck('{$vo.id}')" class="btn btn-default btn-xs" >查看</button>
+                                                <!-- <a class="btn btn-default btn-xs" href="#">模版</a> -->
+                                            </td>
+                                        </tr>
+                                    </volist>
+
+                                    <if condition="empty($data)">
+                                        <tr>
+                                            <td colspan="9">
+                                                <div class="alert alert-danger text-center" role="alert">对不起，暂无数据</div>
+                                            </td>
+                                        </tr>
+                                    </if>
+
+
+                                </table>
+                            </div><!-- /.box-body -->
+                        </form>
+                        <div class="box-footer">
+                            <div class="text-right">
+                                {$page}
+                            </div>
+                        </div>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+
+
+</div><!-- ./wrapper -->
+
+<div class="modal fade " id="myModala" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+            </div>
+            <div class="modal-body no-padding maxh500">
+                <table class="table table-hover">
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right" style="">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">关闭</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function ck(id) {
+        $('#myModala').modal({});
+        var url="{:U('Systemnoticiation/tankuang')}&id="+id;
+        $.getJSON(url,function (json) {
+            if(json[0].content == null){
+                json[0].content= "";
+            }
+            if(json[0].title == null){
+                json[0].title= "";
+            }
+            if(json[0].add_time == null){
+                json[0].add_time= "";
+            }
+            var tbody='';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">标题：</p></td>';
+            tbody+='<td class="tc" width="70%"><p class="pull-left">'+json[0].title+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">内容：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].content+'</p></td>';
+            tbody+='</tr>';
+            tbody+='<tr>';
+            tbody+='<td><p class="pull-right">时间：</p></td>';
+            tbody+='<td class="tc"><p class="pull-left">'+json[0].add_time+'</p></td>';
+            tbody+='</tr>';
+            document.getElementById("tbody").innerHTML=tbody;
+        });
+        return false;
+    }
+
+
+
+    del_id = '';
+    //全选反选
+    $(function (){
+        var boxs = document.getElementsByName('ckbox');
+        $('#ChooseAll').click(function () {
+            $('input[name=ckbox]').prop('checked', $(this).is(':checked'));
+        });
+        $('input[name=ckbox]').click(function () {
+            var len = $('input[name=ckbox]:checked').length;
+            if (len == boxs.length) {
+                $('#ChooseAll').prop('checked', true);
+            } else {
+                $('#ChooseAll').prop('checked', false);
+            }
+        });
+
+    });
+
+    //搜索
+    function select() {
+        var val = $("#keyword").val();
+        if (val == "") {
+            location.href = "{:U('Systemnoticiation/index')}";
+            return false;
+        }
+    }
+
+</script>
+<include file="Public:footer"/>

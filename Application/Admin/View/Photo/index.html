@@ -1,0 +1,142 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+
+<div class="content-wrapper">
+    <include file="Public:breadcrumb"/>
+    <section class="content">
+            <!-- USERS LIST -->
+            <div class="box box-danger">
+                <div class="box-body no-padding">
+                    <div class="box-header with-border">
+                        <div class="col-md-12 ">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <form action="{:U('Photo/reviewed')}" method="post" id="myform">
+
+                                        <input type="button" class="btn btn-success" id="selectAll" value="全选/取消">
+                                        <button type="button" id="success"  class="btn btn-primary">批量审核通过</button>
+                                        <button type="button" id="fail" class="btn btn-info">批量审核未通过</button>
+
+                                        <div class="row" style="padding: 15px;">
+                                            <volist name="userinfo" id="list">
+                                            <div class="col-md-3" style="padding: 30px; border: solid 1px; width: 250px; height: 350px;">
+                                                <img src="{$list.card}" class="img-responsive" style="width:200px; height:220px;">
+                                                <p class="text-center">
+                                                    <label><input type="checkbox" id="thumb" name="ids[]" value="{$list.id}" />选中图片 </label>
+                                                </p>
+
+                                                <p class="text-center">
+                                                    <if condition="$list.status == 1">
+                                                        <span class="btn btn-success btn-xs">审核通过</span>
+                                                        <else/>
+                                                        <button type="button" class="btn btn-gray btn-xs">审核不通过</button>
+                                                    </if>
+                                                </p>
+
+                                                <div class="text-center">
+                                                <a class="btn btn-default btn-xs" href="#" onclick="return audit('{$list.id}')">审核</a>
+                                                </div>
+
+                                            </div>
+                                          </volist>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box-header -->
+
+    </section>
+
+
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        var boxs = document.getElementById('thumb');
+        $('#selectAll').click(function () {
+            $('input[id=thumb]').each(function () {
+                $(this).prop("checked", !$(this).prop("checked"));
+            });
+        });
+
+        $('input[id=thumb]').click(function () {
+            var len = $('input[id=thumb]:checked').length;
+            if (len == boxs.length) {
+                $('#selectAll').attr('checked', true);
+            } else {
+                $('#selectAll').attr('checked', false);
+            }
+        });
+
+    })
+
+</script>
+<!--审核弹出框-->
+<div class="modal fade" id="myModalaudit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelaudit" aria-hidden="true">
+    <div class="modal-dialog" style="width: 240px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabelaudit">提示</h4>
+            </div>
+
+            <div class="modal-body">
+                <form action="{:U('video/audit')}" method="post" id="formaudit">
+                    <input type="hidden" id="audit_id" value="" name="audit_id">
+                    <div class="modal-body text-center">
+                        <button type="button" class="btn btn-info btn-success" onclick='review(1)'>通过</button>
+                        <button type="button" class="btn btn-gray" onclick='review(0)'>不通过</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    //审核
+    var delid = '';
+    function audit(id) {
+        delid = id;
+        $("#audit_id").val(delid);
+        $('#myModalaudit').modal('show');
+        return fasle;
+    }
+    function trueaudit() {
+        $("#formaudit").submit();
+    }
+    function review(status) {
+        location.href = "{:U('Photo/reviewed')}&id="+delid+"&zt="+status;
+    }
+    $('#success').click(function () {
+        var le = $("input:checked").length;
+        if(le == 0){
+            alert('请选择数据');
+            return false;
+        }
+        myform.submit();
+    });
+    $('#fail').click(function () {
+        var le = $("input:checked").length;
+        if(le == 0){
+            alert('请选择数据');
+            return false;
+        }
+        myform.action = "{:U('Photo/failed')}";
+        myform.submit();
+    })
+</script>
+
+
+
+<include file="Public:footer"/>

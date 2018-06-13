@@ -1,0 +1,125 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+                <!-- general form elements -->
+                <div class="box box-solid">
+                    <!-- form start -->
+                    <form role="form" id="baocun" enctype="multipart/form-data" action="{:U('admin/profession/profession_edit')}" method="post">
+                        <div class="box-body">
+                            <div class="form-group"> <!--has-error-->
+                                <label for="">专业名称 <span class="required">*</span></label>
+                                <div>
+                                    <input name="name" value="{$rs.name}" type="text" required class="form-control wp50 inline-block" id="title" placeholder="输入专业名称 ...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea placeholder="请输入描述 ..." required name="content" rows="3" class="form-control">{$rs.content}</textarea>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group  ">
+                                <label>专业等级</label>
+                                <select class="form-control wp50" name="level" id="level">
+                                    <option value="0">低级</option>
+                                    <option value="1">中级</option>
+                                    <option value="2">高级</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group"> <!--has-error-->
+                                <label for="">请输入学时 <span class="required">*</span></label>
+                                <div>
+                                    <input name="period"  value="{$rs.period}" type="text" required class="form-control wp50 inline-block" id="period" placeholder="输入学时 ...">
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group  ">-->
+                                <!--<label>课程等级</label>-->
+                                <!--<select class="form-control wp50" name="author_id" id="author">-->
+                                    <!--<option>≡请选择课程等级≡</option>-->
+                                    <!--<option>请选择课程等级</option>-->
+                                    <!--<option>请选择课程等级</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+
+
+                            <div class="form-group  ">
+                                <label>状态：</label>
+                                <br>
+                                <form>
+                                    <label><input name="status" class="status" type="radio" value="1" >启用 </label>
+                                    <label><input name="status" class="status"  type="radio" value="0" />禁止 </label>
+                                </form>
+
+                            </div>
+
+                            <input type="hidden" value="{$rs.id}" name="id">
+
+                            <!--<label for="">课程视频数量<span class="required"></span></label>-->
+                            <!--<div>-->
+                                <!--<input required type="text"  name="" class="form-control wp50 inline-block" id="" placeholder="">-->
+                            <!--</div>-->
+
+                            <div class="box-footer">
+                                <button class="btn btn-primary w100" type="submit">保存</button>
+                                <a onclick="history.go('-1')" class="btn btn-info w100 mr20" type="submit">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.box -->
+            </div><!--/.col (left) -->
+
+        </div>
+    </section>
+    <!-- /.content -->
+
+</div><!-- ./wrapper -->
+<!--默认等级-->
+<script type="text/javascript">
+    var valeu = $("option").each(function(){
+        var level = "{$rs.level}";
+        var valeu = $(this).val();
+        if (valeu == level){
+            $("option[value = "+level+"]").attr("selected","selected")
+        }
+    });
+
+    var statu = $(".status").each(function(){
+        var level = "{$rs.status}";
+        var statu = $(this).val();
+        if (statu == level){
+            $(".status[value = "+level+"]").attr("checked","checked")
+        }
+    });
+
+    $("#baocun").validate({
+        rules: {
+            name: "required",
+            content: "required",
+            period: {
+                required:true,
+                range:[1,10]
+            }
+        },
+        messages: {
+            name: "用户名不能为空",
+            content: "描述不能为空",
+            period: "请输入1-10的数字"
+        }
+    });
+
+
+</script>
+<include file="Public:footer"/>

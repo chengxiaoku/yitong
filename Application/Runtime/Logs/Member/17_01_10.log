@@ -1,0 +1,53 @@
+[ 2017-01-10T10:32:27+08:00 ] 127.0.0.1 /yitong/member.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000709s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001209s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001386s ]
+
+[ 2017-01-10T10:32:28+08:00 ] 127.0.0.1 /yitong/member.php?m=Member&c=auth&a=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000723s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001125s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001278s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000286s ]
+NOTIC: [8] Undefined variable: title E:\wamp\www\yitong\Application\Runtime\Cache\Member\7a7285bd4959836186630dd67faf7162.php 第 5 行.
+NOTIC: [8] Undefined variable: error E:\wamp\www\yitong\Application\Runtime\Cache\Member\7a7285bd4959836186630dd67faf7162.php 第 107 行.
+NOTIC: [8] Undefined variable: ref E:\wamp\www\yitong\Application\Runtime\Cache\Member\7a7285bd4959836186630dd67faf7162.php 第 136 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045071s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045340s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.014609s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014789s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025094s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025282s ]
+
+[ 2017-01-10T10:32:28+08:00 ] 127.0.0.1 /yitong/member.php?m=Member&c=auth&a=verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001077s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001174s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001350s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001889s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002222s ]
+
+[ 2017-01-10T10:33:49+08:00 ] 127.0.0.1 /yitong/member.php?m=Member&c=auth&a=verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000762s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001208s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001392s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001566s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001806s ]
+

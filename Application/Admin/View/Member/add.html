@@ -1,0 +1,530 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+
+
+<div class="content-wrapper">
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-solid">
+                    <!-- form start -->
+
+                    <div class="box-body">
+                        <!--基本信息-->
+                        <!-- form start -->
+                        <form role="form" id="loginForm" action="{:U('member/add')}" method="post">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="form-group">
+                                        <label class="label_mess"> 姓名：</label>
+                                        <input type="text" placeholder="输入姓名 ..."  name="name" id="name"
+                                               class="form-control w100 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 身份证：</label>
+                                        <input type="text" placeholder="输入身份证 ..." name="identity" id="identity"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 密码：</label>
+                                        <input type="password" placeholder="输入密码 ..." name="password" id="password"
+                                               class="form-control w150 inline-block relative right absolute ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 再次输入密码：</label>
+                                        <input type="password" placeholder="再次输入密码 ..." name="next_password" id="password2"
+                                               class="form-control w150 inline-block relative right absolute ">
+                                    </div>
+
+                                    <div class="form-group" style="height: 34px">
+                                            <label for="thumb" class="label_mess">上传头像：</label>
+                                            <div class="input-group" style="position: relative; left: 124px; top: -25px;">
+                                                <input type="text" disabled="disabled" placeholder="上传头像 ..."  style="width: 150px;"  class="form-control" id="uiFileUploadInput1" data-thumb="">
+                                                <input type="hidden" id="jb_image" name="headimg" >
+                                                <button onclick="upload1()" type="button" class="btn btn-success btn-flat"><i class="fa fw fa-plus-circle"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="form-group" style="height: 34px">
+                                            <label for="card" class="label_mess">上传身份证：</label>
+                                            <div class="input-group" style="position: relative; left: 124px; top: -25px;">
+                                                <input type="text" disabled="disabled" placeholder="上传身份证照片 ..." style="width: 150px;"  class="form-control" id="uiFileUploadInput" data-thumb="">
+                                                <input type="hidden" name="image">
+                                                <button onclick="upload()" style="" type="button" class="btn btn-success btn-flat"><i class="fa fw fa-plus-circle"></i></button>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 手机号码：</label>
+                                        <input type="text" placeholder="输入手机号码 ..." name="phone" id="phone"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 用户等级：</label>
+                                        <select class="form-control w200 inline-block province" name="level" id="level">
+                                            <volist name="grad" id="row">
+                                                <if condition="$lists['level'] eq $i-1">
+                                                    <option selected="selected" value="{$i-1}">{$row}</option>
+                                                    <else/>
+                                                    <option value="{$i-1}">{$row}</option>
+                                                </if>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 性别：</label>
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input checked="checked" value="male"  name="sex" type="radio">男
+                                            </label>
+                                        </div>
+                                        <div class="radio inline-block margin0">
+                                            <label>
+                                                <input value="female"  name="sex" type="radio">女
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 民族：</label>
+                                        <input type="text" placeholder="输入民族 ..." name="nation" id="nation"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 邮箱：</label>
+                                        <input type="email" placeholder="输入邮箱 ..." name="email" id="email"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 学历：</label>
+                                        <select class="form-control w200 inline-block province" name="educational" id="educational">
+                                            <volist name="_data" id="row">
+                                                <if condition="$lists['educational'] eq $i-1">
+                                                    <option selected="selected" value="{$i-1}">{$row}</option>
+                                                </if>
+                                                <option value="{$i-1}">{$row}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 学校：</label>
+                                        <input type="text" placeholder="输入学校 ..." name="school" id="school"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="margin-left: 45px;">
+                                            <label style="position: relative;top: -11px; left: -15px;" class="inline-block"> 毕业时间：</label>
+                                            <div class="inline-block">
+                                                <div class="input-group">
+                                                    <input type="text" style="left: 5px;" name="graduation_date" placeholder="输入毕业时间 ..." id="begin-time" class="form-control" >
+                                                    <div class="input-group-btn">
+                                                        <button style="left: 5px;" onclick="return selectDate(this, 'begin-time')" type="button" class="btn btn-success btn-flat"><i class="fa fa-clock-o"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 行政职务：</label>
+                                        <input type="text" placeholder="输入行政职务 ..." name="duty" id="duty"
+                                               class="form-control w200 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 所学专业：</label>
+                                        <select class="form-control w200 inline-block province" name="profession" id="profession">
+                                            <volist name="sp" id="row">
+                                                <if condition="$lists['profession'] eq $row['id']">
+                                                    <option value="{$row['id']}" selected="selected">{$row['name']}</option>
+                                                    <else/>
+                                                    <option value="{$row['id']}">{$row['name']}</option>
+                                                </if>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 现有职称：</label>
+                                        <select class="form-control w200 inline-block province" name="duty_level" id="duty_level">
+                                            <volist name="duty_level" id="row2">
+                                                <if condition="$i-1 eq $lists['duty_level']">
+                                                    <option selected="selected" value="{$i-1}">{$row2}</option>
+                                                    <else/>
+                                                    <option value="{$i-1}">{$row2}</option>
+                                                </if>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess" > 是否毕业：</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="1" name="graduation" checked="checked">是
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="0" name="graduation">否
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 学费：</label>
+                                        <input type="text" placeholder="输入学费 ..." name="fee" id="fee"
+                                               class="form-control w100 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess" > 缴费状态：</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="1" name="fee_status" checked="checked">已交
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="0" name="fee_status">未交
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                       <div style="margin-left: 45px;">
+                                            <label style="position: relative;top: -11px; left: -15px;" class="inline-block"> 培训时间：</label>
+                                            <div class="inline-block">
+                                                <div class="input-group">
+                                                    <input type="text" style="left: 5px;" name="training_time" placeholder="输入培训时间 ..." id="bg-time" class="form-control">
+                                                    <div class="input-group-btn">
+                                                        <button style="left: 5px;" onclick="return selectDate(this, 'bg-time')" type="button" class="btn btn-success btn-flat"><i class="fa fa-clock-o"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"> 累计课时：</label>
+                                        <input type="text" placeholder="输入累计课时 ..." name="hour" id="hour"
+                                               class="form-control w100 inline-block">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess" > 状态：</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="1" name="status" checked="checked">启用
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="0" name="status">禁止
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label_mess"></label>
+                                        <button class="btn btn-primary w100" type="submit" onclick="return login()">保存
+                                        </button>
+                                        <a onclick="history.go('-1')" class="btn btn-info w100 ml20"
+                                           type="submit">返回</a>
+                                    </div>
+
+                                </div><!-- /.tab-pane -->
+                            </div><!-- /.tab-content -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.content  -->
+</div>
+<div class="modal fade" id="imageUploadModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="thumb">上传图片</h4>
+            </div>
+            <div class="modal-body no-padding maxh500">
+                <div class="images-zone tc thumb-place-holder">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-left" style="">
+                    <div class="btn btn-success fileinput-button pull-left inline-block">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>添加图片...</span>
+                        <input id="fileupload1" type="file" name="files[]" multiple="" data-text-control="#uiFileUploadInput1">
+                    </div>
+                    <span class="loading action-doing hide inline-block mt5 ml10"><i class="fa fa-refresh fa-spin"></i>&nbsp;文件上传中...</span>
+                    <span class="loading action-done hide inline-block mt5 ml10"><i class="fa fa-check-circle-o"></i>&nbsp;上传成功</span>
+                </div>
+                <button type="button" class="btn btn-default ml20" data-dismiss="modal">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 上传图片模态框 -->
+
+<div class="modal fade " id="imageUploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="card">上传身份证照片</h4>
+            </div>
+            <div class="modal-body no-padding maxh500">
+                <div class="images-zone tc thumb-place-holder">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-left" style="">
+                    <div class="btn btn-success fileinput-button pull-left inline-block">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>身份证照片...</span>
+                        <input id="fileupload" type="file" name="files" multiple="" data-text-control="#uiFileUploadInput">
+                    </div>
+                    <span class="loading action-doing hide inline-block mt5 ml10"><i class="fa fa-refresh fa-spin"></i>&nbsp;图片上传中...</span>
+                    <span class="loading action-done hide inline-block mt5 ml10"><i class="fa fa-check-circle-o"></i>&nbsp;上传成功</span>
+                </div>
+                <button type="button" class="btn btn-default ml20" data-dismiss="modal">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{:ASSETS}plugins/jquery-validate/jquery.validate.min.js"></script>
+<script src="{:ASSETS}plugins/jquery-validate/localization/messages_zh.min.js"></script>
+<script src="{:ASSETS}plugins/jquery-validate/additional-methods.min.js" type="text/javascript"></script>
+<!-- jquery file upload -->
+<script src="{:ASSETS}plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="{:ASSETS}plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+<link href="{:ASSETS}plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css"/>
+
+
+
+<script src="{:ASSETS}plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="{:ASSETS}plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8" type="text/javascript"></script>
+<link href="{:ASSETS}plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+
+
+
+<style type="text/css">
+    .label_mess {
+        width: 100px;
+        text-align: right;
+        margin-right: 20px;
+    }
+    .error{
+        color: red;
+
+    }
+</style>
+
+
+
+
+<script type="text/javascript">
+    //选择日期
+    function selectDate(o, id) {
+        var _id = '#' + id;
+        $(_id).datepicker({
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN'
+        }).on("changeDate", function(e) {
+            var me = e.target;
+            $(this).datepicker('hide');
+        });
+
+        $(_id).datepicker('show');
+
+    }
+    </script>
+
+<script type="text/javascript">
+    //选择日期
+    function time(o, id) {
+        var _id = '#' + id;
+        $(_id).datepicker({
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN'
+        }).on("changeDate", function(e) {
+            var me = e.target;
+            $(this).datepicker('hide');
+        });
+
+        $(_id).datepicker('show');
+
+    }
+</script>
+
+
+
+
+<script type="text/javascript">
+    //BEGIN:上传图片基本信息
+    function upload1() {
+        $('#imageUploadModal1').modal({});
+    }
+    //BEGIN:上传图片
+    function upload() {
+        $('#imageUploadModal').modal({});
+    }
+    <!--表单验证-->
+    // 移动电话号码验证
+    jQuery.validator.addMethod("isPhone", function(value, element) {
+        var reg = /^1[34578]\d{9}$/;
+        return this.optional(element) || (reg.test(value));
+    }, "* 请填写正确格式手机号码");
+
+    // 身份证号码验证
+    jQuery.validator.addMethod("isIDCard", function(value, element) {
+        var reg = /(^\d{15}$)|(^\d{17}([0-9]|X)$)/;
+        return this.optional(element) || (reg.test(value));
+    }, "* 请填写正确格式身份证号码");
+
+    //END:上传图片
+    file_url = "{:U('admin/member/jqueryFileUpload')}";
+    function show_img(id_1,id_2,te){
+        $(id_1).fileupload({
+            //options
+            url: file_url,
+            dataType: 'json',
+            autoUpload: true,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            maxFileSize: 999000,
+            //event
+            add: function(e, data) {
+                //指定模态框容器
+                data.context = $(id_2);
+                var autoUpload = $.blueimp.fileupload.prototype.options.autoUpload;
+                if (autoUpload) {
+                    data.submit();
+                    data.context.find(".action-doing").removeClass("hide");
+                }
+                return true;
+            },
+
+            progressall: function(e, data) {
+                //进度条
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+            },
+
+            done: function(e, data) {
+                var fileInput = data.fileInput;
+                var inputTextId = fileInput.attr("data-text-control");
+                var inputText = $(inputTextId);
+                var placeHolder = data.context.find(".thumb-place-holder");
+                placeHolder.html("");
+                $.each(data.result.files, function (index, file) {
+                    if (file.thumbnailUrl) {
+
+                        $("<img>").attr("src", file.thumbnailUrl).appendTo(placeHolder);
+                        inputText.val(file.url);
+                        inputText.attr("data-thumb", file.thumbnailUrl);
+                        $("input[name="+te+"]").val(file.thumbnailUrl);
+                    }
+                });
+
+                data.context.find(".action-doing").addClass("hide");
+                data.context.find(".action-done").removeClass("hide");
+
+            }
+
+        });
+    }
+    show_img("#fileupload1","#imageUploadModal1","headimg");
+    show_img("#fileupload","#imageUploadModal",'image');
+
+
+
+    function login() {
+
+        $("#thumb_error").css('display','');
+        $("#graduation_date_error").css('display','');
+        <!--验证不能为空-->
+        $("#loginForm").validate({
+            rules: {
+                name: {
+                    required: true,
+                    rangelength:[2,4]
+                },
+                identity: {
+                    required: true,
+                    isIDCard: true
+                },
+                password: {
+                    required: true,
+                    rangelength:[6,18]
+                },
+                next_password: {
+                    required: true,
+                    rangelength:[6,18],
+                    equalTo: "#password"
+                },
+                phone: {
+                    required: true,
+                    isPhone: true
+                },
+                level: "required",
+                sex: "required",
+                /*email: "required",*/
+                educational: "required",
+                profession: "required",
+                school: "required",
+                graduation_date: "required",
+                duty: "required",
+                duty_level: "required",
+                hour: "required",
+                graduation: "required",
+                fee: "required",
+                fee_status : "required",
+                training_time: "required"
+                /*courses: "required"*/
+
+            },
+
+            messages: {
+                name: {
+                    required: "* 姓名不能为空",
+                    rangelength: "* 姓名长度必需在2-4个字符之间"
+                },
+                identity: {
+                    required: "* 身份证号码不能为空",
+                    isIDCard: "* 身份证号码格式不正确"
+                },
+                password: {
+                    required: "* 密码不能为空",
+                    rangelength: "* 密码长度必需在6-18个字符之间"
+                },
+                next_password: {
+                    required: "* 重复密码不能为空",
+                    rangelength: "* 密码长度必需在6-18个字符之间",
+                    equalTo: "* 两次密码输入不一致"
+                },
+                phone:{
+                    required: "* 手机号码不能为空",
+                    isPhone: "* 手机号码格式不正确"
+                },
+
+                level:  "* 用户等级不能为空",
+                sex: "* 性别不能为空",
+               /* email: "* 邮箱不能为空",*/
+                educational: "* 学历不能为空",
+                profession: "* 所学专业不能为空",
+                school: "* 学校不能为空",
+                graduation_date: "* 毕业时间不能为空",
+                duty: "* 行政职务不能为空",
+                duty_level: "* 现有职称不能为空",
+                hour: "* 累计课时不能为空",
+                graduation: "* 是否毕业不能为空",
+                fee: "* 学费不能为空",
+                fee_status : "* 缴费状态不能为空",
+                training_time: "* 培训时间不能为空"
+               /* courses: "* 累计课时不能为空"*/
+
+
+
+
+
+            }
+        });
+        return true;
+    }
+
+
+</script>
+
+
+
+<include file="Public:footer"/>

@@ -1,0 +1,115 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+                <div class="nav-tabs-custom">
+                    <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="form-group">
+                                    <label>网站域名:</label>
+                                    <div>
+                                        <input id="{$set1.id}" type="text" placeholder="输入网站域名 ..." value="{$set1.setting_value}" name="domain_name"
+                                               class="form-control wp50 inline-block">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>网站名称:</label>
+                                    <div>
+                                        <input id="{$set2.id}" type="text" placeholder="输入网站名称 ..." value="{$set2.setting_value}" name="site_name"
+                                               class="form-control wp50 inline-block">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>网站关键词:</label>
+                                    <div>
+                                        <input id="{$set3.id}" type="text" placeholder="输入网站关键词 ..." value="{$set3.setting_value}" name="site_keywords"
+                                               class="form-control wp50 inline-block">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>网站描述:</label>
+                                    <div>
+                                            <textarea id="{$set4.id}" name="site_description" class="form-control wp50" rows="3"
+                                                      placeholder="网站描述 ...">{$set4.setting_value}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for=>网站状态:</label>
+                                    <div>
+                                        <div class="radio inline-block mt0">
+                                            <label>
+                                                <input id="pd" style="display: none" value="{$set5.setting_value}">
+                                                <input id="1" type="radio" name="site_status" value="1" checked>正常
+                                            </label>
+                                        </div>
+                                        <div class="radio inline-block mt0 ml20">
+                                            <label>
+                                                <input id="0" type="radio" name="site_status" value="0">关闭
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="yz">
+                                    <label>关闭原因:</label>
+                                        <textarea id="{$set6.id}" placeholder="Enter ..." name="close_reason" rows="5"
+                                                  class="form-control wp50">{$set6.setting_value}</textarea>
+                                </div>
+
+                                <div class="box-footer p20">
+                                    <button class="btn btn-primary w100" onclick="return baocun()">保存</button>
+                                    <!--<a onclick="history.go('-1')" class="btn btn-info w100 ml20"
+                                       type="submit">返回</a>-->
+                                </div>
+                            </div><!-- /.tab-pane -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.content -->
+
+</div><!-- ./wrapper -->
+<include file="Public:footer"/>
+<script>
+    function baocun() {
+        var domain_name=$("#1").val();
+        var site_name=$("#2").val();
+        var site_keywords=$("#3").val();
+        var site_description=$("#4").val();
+        var site_status=$("input:radio:checked").val();
+        var close_reason=$("#6").val();
+        var url ="{:U('Set/Index')}&domain_name="+domain_name+"&site_name="+site_name+"&site_keywords="+site_keywords+"&site_description="+site_description+"&site_status="+site_status+"&close_reason="+close_reason;
+        $.getJSON(url,function (json){
+            alert(json);
+            history.go();
+        }
+        )
+    }
+    $(document).ready(
+            function () {
+                var ok=$("#pd").val();
+                $("#"+ok).prop("checked",'true');
+
+
+                var time=setInterval(function () {
+                    var site_status=$("input:radio:checked").val();
+                    if(site_status=='1'){
+                        $("#yz").css("display",'none');
+                    }else if(site_status=='0'){
+                        $("#yz").css("display",'');
+                    }
+                },1000);
+
+            }
+    )
+</script>
+

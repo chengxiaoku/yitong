@@ -1,0 +1,134 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <include file="Public:breadcrumb"/>
+    <!-- 引入视频插件-->
+    <script src="./Public/build/mediaelement-and-player.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./Public/build/mediaelementplayer.min.css">
+    <!-- 主体内容 -->
+    <section class="content">
+            <video width="100%" poster="{:ASSETS}img/ytjz.jpg" height="560" src="{$data['video_url']}" type="video/mp4"
+                   id="player1"
+                   controls="controls" preload="none">
+
+            </video>
+    </section>
+
+</div>
+<include file="Public:footer"/>
+<!--判断是否结束，关闭JS事件-->
+
+<script type="text/javascript">
+
+
+    var _vido_id = "{$data['id']}";
+    //异步请求发送的地址
+    var my_url = "{:U('Specialized/log')}";
+    //获取进度
+    var time = "{$time}";
+//alert(time);
+    var player = null;
+
+    //5秒计时器
+    var _timer = null;
+
+    $("video").mediaelementplayer({
+        startVolume: 0.9,
+        loop: false,
+        features: ['playpause','current','duration','tracks','volume','fullscreen'],
+        //关闭键盘事件
+        enableKeyboard: false,
+
+        success: function(mediaElement, domElement) {
+            player = mediaElement;
+            //player.play();
+            //监听时间进度事件
+            player.addEventListener("timeupdate", CallBackTimeupdate);
+            //监听暂停事件
+            player.addEventListener("pause", CallBackPause);
+            //监听点击播放按钮事件
+            player.addEventListener("playing", CallBackPlaying);
+            //监听点击开始
+            player.addEventListener("progress", CallBackProgress);
+            //监听完毕事件
+            player.addEventListener("ended", CallBackEnded);
+
+            //定位到20秒
+            player.setCurrentTime(time);
+            player.addEventListener("loadedmetadata", CallBackLoadeddata);
+
+
+            //获取视频总长度
+            //var total = player.duration  ;
+            //console.log(total);
+        }
+
+    });
+
+    function CallBackLoadeddata() {
+        var total = player.duration  ;
+        //console.log(player);
+    }
+
+    //播放器暂停事件
+    function CallBackPause() {
+        var current_time = player.currentTime;
+        //console.log("当前暂停时间:" + current_time);
+        //ajax 回传
+
+        clearTimeout(_timer);
+    }
+
+    //点击播放按钮事件
+    function CallBackPlaying() {
+        var current_time = player.currentTime;
+        //console.log("playing button event :" + current_time);
+        //开始播放
+        time_1();
+    }
+
+    //5分钟是5秒的60倍
+    function time_1(){
+        _timer =  setTimeout(function(){
+            //每5秒回传一次数据
+             //非暂停情况下回传数据
+            player.stop();
+            clearTimeout(_timer);
+            _timer = null;
+
+        }, 300000);
+
+    }
+
+    //播放过程中的事件（只是在开始触发）
+    function CallBackProgress() {
+        setInterval(function (){
+            if(!player.paused){
+                var _time = player.currentTime;
+                $.post(my_url, {vido_id:_vido_id,time:_time}, function(data) {
+                });
+            }
+        },5000);
+        time_1();
+    }
+
+    //视频播放时间更新事件
+    function CallBackTimeupdate() {
+        var _time = player.currentTime;
+        //每5秒进行一次回传数据
+
+        //console.log(_time);
+    }
+
+    //视频播放完毕事件
+    function CallBackEnded() {
+        var url = "{:U('Specialized/end')}";
+        $.post(url, {vido_id:_vido_id}, function(data) {
+        });
+    }
+
+    function stop() {
+        player.stop();
+    }
+
+</script>

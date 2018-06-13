@@ -1,0 +1,101 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+
+<style type="text/css">
+    .one{text-align:center;height:100px;  border:1px #333 solid;}
+</style>
+
+<link rel="stylesheet" href="print.css" media="print" />
+
+
+<div class="content-wrapper">
+    <section class="content">
+
+        <input class="btn btn-success" name="print" onclick="return print_page(this)" type="button" id="bt" value="打印" />
+        <a onclick="history.go('-1')" class="btn btn-info w10 mr20" type="submit">返回</a>
+
+           <div id="div_print" style="border: solid 1px black; margin-left:30px; margin-right: 30px;  margin-top: 10px; padding-top: 40px; padding-bottom: 90px">
+              <h3 align="center">合格证明</h3>
+
+              <table border="1" cellspacing="0" cellpadding="0" style="margin: 0 auto">
+
+                <tr class="one">
+
+                    <td width="90px">学员姓名</td>
+                    <td width="180px">{$name}</td>
+                    <td width="90px">性别</td>
+                    <td width="70px">
+
+                    <if condition="$data['sex'] eq 'male'">男
+                    <else/>
+                        女
+                    </if>
+
+                    </td>
+                    <td rowspan="2" width="120px"><img src="{$data['thumb']}" class="img-responsive"></td>
+                </tr>
+
+                <tr class="one">
+                    <td>身份证</td>
+                    <td>{$data['identity']}</td>
+                    <td>培训年份</td>
+                    <td>{$data['add_time']}</td>
+                </tr>
+
+                <tr class="one">
+                    <td>已完成学时</td>
+                    <td>{$data['hour']}</td>
+                    <td>专业课</td>
+                    <td colspan="2">{$data['name']}</td>
+                </tr>
+
+                <tr class="one">
+                    <td>成绩</td>
+                    <td>{$data['grade']}</td>
+                    <td>说明</td>
+                    <td colspan="2"></td>
+                </tr>
+
+            </table>
+        </div>
+    </section>
+</div>
+
+
+<!--打印页面-->
+<script language="javascript">
+    function print_page(btn) {
+        var div_print_content = document.getElementById("div_print").innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML =div_print_content;
+        window.print();
+        document.body.innerHTML=oldstr;
+        return false;
+    }
+
+    //    function printdiv(printpage)
+    //    {
+    //        var newstr = printpage.html();
+    //        var oldstr = document.body.innerHTML;
+    //
+    //        document.body.innerHTML =newstr;
+    //        //$('#div_print').html(newstr) ;
+    //        window.print();
+    //        document.body.innerHTML=oldstr;
+    //        return false;
+    //    }
+    //    window.onload=function()
+    //    {
+    //        var bt=document.getElementById("bt");
+    //        //div_print=document.getElementById("div_print");
+    //        div_print = $('#div_print');
+    //        bt.onclick=function()
+    //        {
+    //            printdiv(div_print);
+    //        }
+    //    }/
+
+</script>
+
+
+<include file="Public:footer"/>

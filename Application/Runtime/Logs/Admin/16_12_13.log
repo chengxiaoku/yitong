@@ -1,0 +1,10 @@
+[ 2016-12-13T09:36:16+08:00 ] 127.0.0.1 /yitong/
+ERR: SQLSTATE[28000] [1045] Access denied for user 'user_tfamily'@'localhost' (using password: YES)
+
+[ 2016-12-13T12:50:04+08:00 ] 127.0.0.1 /yitong/index.php?m=Admin&c=Auth&a=zz
+ERR: 闈炴硶鎿嶄綔:zz
+
+[ 2016-12-13T20:08:08+08:00 ] 127.0.0.1 /yitong/admin.php?m=Admin&c=auth&a=login
+ERR: SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+

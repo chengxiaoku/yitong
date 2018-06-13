@@ -1,0 +1,256 @@
+<include file="Public:header"/>
+<include file="Public:menu"/>
+<div class="content-wrapper">
+    <!--页面导航/面包屑-->
+    <include file="Public:breadcrumb"/>
+    <!-- 主体内容 -->
+    <section class="content">
+
+        <!--表格-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <form action="{:U('video/select')}" method="post">
+                            <a class="btn btn-primary" href="{:U('video/add')}&type=profession">添加专业课</a>
+                            <a class="btn btn-primary" href="{:U('video/add')}&type=public">添加公需课</a>
+                            <a class="btn btn-danger" id="delAll">批量删除</a>
+                            <div class="select pull-right">
+                                <div style="width:250px; margin-left: 5px;" class="input-group fr">
+                                    <input type="text" id="select" placeholder="搜索..." class="form-control" name="find">
+                                    <div onclick="return select()" class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- /.box-header -->
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th width="5%" class="text-center">
+                                    <input type="checkbox" id="ChooseAll">
+                                </th>
+                                <th width="5%" class="text-center">编号</th>
+                                <th width="15%">课件名称</th>
+                                <th width="20%">简介</th>
+                                <th width="8%">发布人</th>
+                                <th width="8%">状态</th>
+                                <th width="8%">学时</th>
+                                <th width="8%">类型</th>
+                                <th width="8%">等级</th>
+                                <th width="15%">管理操作</th>
+                            </tr>
+                            <if condition="empty($list)">
+                                <tr>
+                                    <td colspan="9">
+                                        <div class="alert alert-danger text-center" role="alert">对不起，暂无数据</div>
+                                    </td>
+                                </tr>
+                            </if>
+                            <foreach name="list" item="vo">
+                            <tr>
+                                <td class="text-center">
+                                    <input type="checkbox" name="ckbox" value="{$vo.id}">
+                                </td>
+                                <td class="text-center">{$vo.id}</td>
+                                <td>{$vo.title}</td>
+                                <td>{$vo.description}</td>
+                                <td>{$vo.username}</td>
+                                <td>
+                                    <if condition="$vo.audit ==  checked">
+                                        <small class="label bg-green">已审核</small>
+                                        <elseif condition="$vo.audit == reject"/>
+                                        <small class="label bg-red">未审核</small>
+                                        <else/>
+                                        <small class="label bg-gray">审核中</small>
+                                    </if>
+                                </td>
+                                <td>
+                                    <small class="label bg-gray">{$vo.period}</small>
+                                </td>
+                                <td>
+                                    <if condition="$vo.type ==  0">
+                                        <small class="label bg-aqua">专业课</small>
+                                        <elseif condition="$vo.type ==  1"/>
+                                        <small class="label bg-aqua">公需课</small>
+                                    </if>
+                                </td>
+                                <td>
+                                    <if condition="$vo.grade ==  0">
+                                        <small class="label bg-aqua">初级</small>
+                                        <elseif condition="$vo.grade ==  1"/>
+                                        <small class="label bg-aqua">中级</small>
+                                        <else/>
+                                        <small class="label bg-aqua">高级</small>
+                                    </if>
+                                </td>
+                                <td>
+                                    <a class="btn btn-default btn-xs" href="#" onclick="return audit('{$vo.id}',this)">审核</a>
+                                    <a class="btn btn-default btn-xs" href="{:U('video/edit')}&id={$vo.id}">修改</a>
+                                    <a href="#" class="btn btn-default btn-xs" onclick="return del('{$vo.id}')">删除</a>
+                                </td>
+                            </tr>
+                            </foreach>
+
+
+
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class=" col-sm-7 ">
+                                <div class="text-right">
+                                        {$fenye}
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+
+    </section><!-- /.content -->
+
+</div><!-- ./wrapper -->
+<!--审核弹出框-->
+<div class="modal fade" id="myModalaudit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelaudit" aria-hidden="true">
+    <div class="modal-dialog" style="width: 240px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabelaudit">提示</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{:U('video/audit')}" method="post" id="formaudit">
+                    <input type="hidden" id="audit_id" value="" name="audit_id">
+                    <div class="radio inline-block margin0">
+                        <label>
+                            <input checked="" id="audit_yes" value="checked" name="audit" type="radio">已审核
+                        </label>
+                    </div>
+                    <div class="radio inline-block margin0">
+                        <label>
+                            <input id="audit_pending" value="pending" name="audit" type="radio">审核中
+                        </label>
+                    </div>
+                    <div class="radio inline-block margin0">
+                        <label>
+                            <input id="audit_no" value="reject" name="audit" type="radio">未审核
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="trueaudit()" class="btn btn-primary w100 ">确定</button>
+                <button type="button" class="btn btn-default w100 " data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除弹出框-->
+<div class="modal fade" id="myModaldel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <span class='glyphicon glyphicon-question-sign text-red' style='font-size: 18px;'></span>
+                <span style='font-size: 18px;' class="ml10 text-red" id="data_sum"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="truedel()" class="btn btn-primary w100 ">确定</button>
+                <button type="button" class="btn btn-default w100 " data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //全选反选
+    $(function (){
+        var boxs = document.getElementsByName('ckbox');
+        $('#ChooseAll').click(function () {
+            $('input[name=ckbox]').prop('checked', $(this).is(':checked'));
+        });
+        $('input[name=ckbox]').click(function () {
+            var len = $('input[name=ckbox]:checked').length;
+            if (len == boxs.length) {
+                $('#ChooseAll').prop('checked', true);
+            } else {
+                $('#ChooseAll').prop('checked', false);
+            }
+        });
+        //批量删除提示操作
+
+        $("#delAll").click(function (){
+            var del_str = '';
+            var len = $('input[name=ckbox]:checked').length;
+            if(len>=1){
+                $('input[name=ckbox]:checked').each(function (){
+                    //$(this).val();
+                    del_str +=','+$(this).val();
+                });
+                del_str = del_str.substring(1);
+                delid = del_str;
+                $("#data_sum").text("确认删除这"+len+'条数据？');
+            }else{
+                $("#data_sum").text('没有选择数据！！');
+            }
+
+            $('#myModaldel').modal('show');
+        })
+    });
+    var delid = "";
+    function del(id) {
+        delid = id;
+        $("#data_sum").text('确认删除这条数据？');
+        $('#myModaldel').modal('show');
+        return fasle;
+    }
+    //确认删除操作
+    function truedel() {
+        location.href = "{:U('video/del')}&id=" + delid;
+    }
+    //审核
+    function audit(id,a) {
+        var type = $(a).parent().prev().prev().prev().prev().children().html();
+        if(type == "已审核"){
+            $("#audit_yes").prop("checked",true);
+        }else if(type == "未审核"){
+            $("#audit_no").prop("checked",true);
+        }else if(type == "审核中"){
+            $("#audit_pending").prop("checked",true);
+        }
+        delid = id;
+        $("#audit_id").val(delid);
+        $('#myModalaudit').modal('show');
+        return fasle;
+    }
+    function trueaudit() {
+        $("#formaudit").submit();
+    }
+    //搜索
+    function select() {
+        var val = $("#select").val();
+        var vals = $.trim(val);
+        if (vals == "") {
+            $("#select").val("");
+            $("#select").attr("placeholder", "请输入有效内容");
+            $("#select").focus();
+            return false;
+        }
+    }
+</script>
+<include file="Public:footer"/>
